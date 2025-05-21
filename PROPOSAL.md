@@ -11,37 +11,18 @@ This is terribly formatted and lacks photos we added to demonstrate some feature
 
 
 Government Budget Simulator
-
-Deficit Clock
-
-Government Spending on Different Sectors
-
-Subsidies
-
-GDP Clock
-
-Scrapes real world top 10 economies data allowing you to play as any government in the last 15 years that has easily available data
-
-Honestly maybe use the GPT API to search it instead of just directly scraping (4k tokens per convo should be more than enough), have it list top ten trade partners in array form
-
-Give random positive and negative events
-
-Print Debt To GDP
-
-People happiness value in utils, calculated by taking a standard human development growth curve and adjusting it by gdp per capita using random formula I’ll come up with based on vibes and testing
-Print trade surplus (negative if deficit)
-
-https://us.abalancingact.com/federal-budget-simulator this but with a smaller US focus and a much smaller focus on the GUI, also ours will progress over time and have a pause button, instead of just being a single thing, closer metaphor is probably like the TNO Mod of hoi 4 but no alt history and no relative focus on the Gui
-
-
-
-
-As you can see gpt auto creates a class we can make a subclass of a trade partners class to grab all the values,
-
-Gpt token limit on a conversation is 4k so about 3000 words, we should need much less to preload all values
-
-This is honestly my favorite idea ever please let us do it
-
+1. Deficit Clock
+2. Government Spending on Different Sectors
+3. Subsidies
+4. GDP Clock
+5. Yfinance4j will be used as a library to bring up basic economic data
+6. Give random positive and negative events
+7. Print Debt To GDP
+8. People happiness value in utils, calculated by taking a standard human development growth curve and adjusting it by gdp per capita using random formula I’ll come up with based on vibes and testing
+9. Print trade surplus (negative if deficit)
+10. Effectively give people options on how to proceed as standard buttons, they have the goal of keeping happiness up and if it ever reaches zero, game over
+closer metaphor is probably like the TNO Mod of hoi 4 but no alt history and no relative focus on the Gui
+![alt text](filename)
 
 Chemical Reaction Simulator
 
