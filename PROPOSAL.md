@@ -22,7 +22,7 @@ This is terribly formatted and lacks photos we added to demonstrate some feature
 9. Print trade surplus (negative if deficit)
 10. Effectively give people options on how to proceed as standard buttons, they have the goal of keeping happiness up and if it ever reaches zero, game over
 closer metaphor is probably like the TNO Mod of hoi 4 but no alt history and no relative focus on the Gui
-![alt text](Econ_Sim_TNO.png)
+![TNO Econ](Econ_Sim_TNO.png)
 
 Verification For Government Budget Simulator:
 1. You can run it and check if the numbers are reasonable and respond as you would expect to relatively good and bad economic decisions (see inflation goes down if interest rate goes up and gdp growth rate gets marginally faster if interest rate comes down)
@@ -32,6 +32,9 @@ Verification For Government Budget Simulator:
 5. We’ll include more direct feature descriptions with the prototype doc that will be more specific and make it even easier to check
 
 Though we understand there are some difficulties inherent to evaluating the government budget simulator, we’d really like to do it anyway. It’d just be an incredibly cool thing to program and we both really fell in love with the idea. We are seniors, after AP exams we should have plenty of time to bring this to fruition, and we just want to make something really cool. Also, we’d really love to use the GPT Api in order to pull up a list of country specifications so that the user can play any country in the world and we don’t have to limit them to nations we hardcoded international trade in for. If it’s a no, it’s a no but we still wanted to include a sample image and more information about what we would use it for, just on the off chance that we can change your mind.
+
+Also, the idea of how GPT would do this is here below, just in case you are fine with it
+![GPT Econ](GPT_Image.png)
 
 
 <b>Chemical Reaction Simulator</b>
