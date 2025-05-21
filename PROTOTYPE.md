@@ -26,6 +26,7 @@ Minimum Viable Product:
 
 
 How you will be using the topics covered in class in the project
+
 1. We'll use a nation class that will contain functions to calculate our major economic indicators (will function as our major parent class) (this will provide us the capacity to add more nation states in for a dynamic trade system and go beyond our minimum viable product)
 2. We'll use sorting to derive a dynamic list of top ten nations by GDP (initially this will just include your nation of it makes it, plus the other nations real world GDPs but we hope to change that after minimum viable product is achieved)
 3. We'll initially use the command line to take player input using the method we learned in class though we'll later modify that to use widgets with will interact with processing once we achieve minimum viable product
@@ -64,21 +65,27 @@ First short term positive and negative events - Jai
 Global Economic Conditions modifier added in early stage for later testing - Seth
 
 6/1/2025
+
 All major domestic economic levers testing, and easy player interfacing and reading via terminal, minimum viable product complete - Seth and Jai
 
 6/4/2025
+
 Important trade indicators added to nation class (including net exports being added to GDP calculations where before it was just stuck at its initial value) and top ten trade partner list of nations successfully implemented as instance variable- Seth
 
 Top ten trade partner economic growth successfully stored and applied - Jai
 
 
 6/6/2025 
+
 Global events properly apply to trade partners and balence of trade changes with trade partner growth - Jai
 
 GPT API integration to successfully look up trade partners and their respective statistics so it doesn't have to have numbers hardcoded in - Seth
 
 6/10/2025 
+
 All prior features tested - Seth and Jai
+
+GPT Api lookup function applied to player as selected real world nation - Seth
 
 
 
