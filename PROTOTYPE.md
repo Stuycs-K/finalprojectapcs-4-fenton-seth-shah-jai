@@ -42,10 +42,9 @@ UML Diagrams and descriptions of key algorithms, classes, and how things fit tog
 
 How you are breaking down the project and who is responsible for which parts.
 
-Full Nation Class With All Indicator Methods Complete and Reigons Specified:
 5/26/2025
 
-Seth and Jai will both work on this
+Full Nation Class With All Indicator Methods Complete and Reigons Specified- Seth and Jai
 
 Early stage government budget control interface - Seth
 
