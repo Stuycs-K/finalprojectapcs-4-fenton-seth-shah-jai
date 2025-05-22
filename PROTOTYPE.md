@@ -36,7 +36,20 @@ How you will be using the topics covered in class in the project
 
 UML Diagrams and descriptions of key algorithms, classes, and how things fit together.
 ![UML](UML_Diagram.png)
+Instance Variables: 
+Doubles: Consumer Spending, Investment: Government Spending, Exports (leave default for now), Imports (leave default for now), DefaultGDPGrowthRate
 
+Static Doubles: Global Economic Goodness Modifier (GEGM), Global GDP Growth, Global GDP
+
+GDP Calculations: 
+Sum Of Instance Variables: Consumer Spending + Investment + Government Spending + Net Exports default (modified when trade features are added)
+
+Debt Calculations: 
+Interest Rate Adjustments: 
+Adjusts interest rate which modifies gdp growth rate 
+Events: Runs through an ArrayList of Events and triggers one 
+Budget Expenditure: the set of methods that governs government spending
+User Input Actions: found within the running class, scans for user input
     
 # Intended pacing:
 
