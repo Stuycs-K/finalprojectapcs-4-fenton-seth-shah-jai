@@ -80,12 +80,9 @@ Global events properly apply to trade partners and balence of trade changes with
 
 GPT API integration to successfully look up trade partners and their respective statistics so it doesn't have to have numbers hardcoded in - Seth
 
-6/10/2025 
+6/12/2025 
+Gui programming complete, widgets and buttons control major functionalities - Seth and Jai
 
-All prior features tested - Seth and Jai
-
-GPT Api lookup function applied to player as selected real world nation - Seth
-
-
-
+6/14/2025 
+All features tested project is complete -  Seth and Jai
 
