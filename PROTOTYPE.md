@@ -34,7 +34,6 @@ How you will be using the topics covered in class in the project
 
 # Project Design
 
-UML Diagrams and descriptions of key algorithms, classes, and how things fit together.
 ![UML](UML_Diagram.png)
 Instance Variables: 
 Doubles: Consumer Spending, Investment: Government Spending, Exports (leave default for now), Imports (leave default for now), DefaultGDPGrowthRate
