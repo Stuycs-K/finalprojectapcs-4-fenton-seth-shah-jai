@@ -3,7 +3,7 @@ public class Bonds {
 
   public Bonds(nationState nation) {
     annualizedInterestRate = nation.getInterestRate();
-    maturationTimeline = 240;
+    maturationTimeline = 20;
     valueOfBonds = nation.getSpending() - nation.getTaxRevenue();
   }
 }
