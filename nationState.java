@@ -55,4 +55,18 @@ public void changeGDP(double change){
   gdpModifier+=change;
 }
 
+public void happened(){
+  Random rand=new Random();
+  double happen=rand.double();
+  if(happened<0.2){
+    //Access the bad list of events
+  }
+  else if(happened>0.9){
+    //Access to the good list of events
+  }
+  else{
+    System.out.println("Nothing ever happens");
+  }
+}
+
 }
