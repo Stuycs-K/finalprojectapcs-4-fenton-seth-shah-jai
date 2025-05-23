@@ -24,6 +24,7 @@ public class Events{
 
     public void SomethingHappened(){
         System.out.println(EventText);
-        
+        changeDefaultGDPGrowthRate(changeGDPRate);
+        changeGDP(changeGDP);
     }
 }
