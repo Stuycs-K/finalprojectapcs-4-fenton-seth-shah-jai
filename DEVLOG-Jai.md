@@ -5,6 +5,6 @@ This document must be updated daily every time you finish a work session.
 ## Jai Shah
 
 ### 2025-05-22 - Worked on Events
-Wasn't here in APCS, wrote up Events in 16 min after discussion.
+Wasn't here in APCS, wrote up Events in 16 min after discussion. Spent another 7 min planning out how events will function and finishing the class, including adding new accessor methods
 
 ### 2024-01-03 - Brief description
