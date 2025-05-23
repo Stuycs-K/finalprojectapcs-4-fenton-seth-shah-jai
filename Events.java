@@ -1,30 +1,30 @@
 import java.util.*;
 public class Events{
-    private String EventText;
-    private double changeGDP, changeGDPRate;
+    private String EventText, changing;
+    private double changeRate;
 
 
-    public Events (double changeGDP, double changeGDPRate, String EventText){
+    public Events (String changing, double changeRate, String EventText){
         changeGDP=changeGDP;
-        changeGDPRate=changeGDPRate;
+        changing=changing;
         EventText=EventText;
     }
 
-    public double changeGDP(){
+    public String changing(){
         return changeGDP;
     }
 
-    public double changeGDPRate(){
-        return changeGDPRate;
+    public String changeRate(){
+        return changeRate;
     }
 
     public String EventText(){
         return EventText;
     }
 
-    public void SomethingHappened(){
+    public void EventHappens(){
         System.out.println(EventText);
-        changeDefaultGDPGrowthRate(changeGDPRate);
+        changeDefaultGDPGrowthRate(changeRate);
         changeGDP(changeGDP);
     }
 }
