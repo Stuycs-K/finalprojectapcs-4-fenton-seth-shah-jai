@@ -34,7 +34,7 @@ How you will be using the topics covered in class in the project
 
 # Project Design
 
-![UML](Screenshot 2025-05-26 004924.png)
+![Screenshot 2025-05-26 004924](Screenshot 2025-05-26 004924.png)
 Instance Variables: 
 Doubles: Consumer Spending, Investment: Government Spending, Exports (leave default for now), Imports (leave default for now), DefaultGDPGrowthRate
 
