@@ -27,14 +27,18 @@ public nationState(double ConsumerSpending, double Investment, double Government
 
 }
 
-public void updateTaxRevenue() {
+public double updateTaxRevenue(double newMaxBracket) {
+oldTaxBracket = setMaxBracket(newMaxBracket);
+oldTaxRevenue = taxRevenue;
 taxRevenue = (1 + GDPGrowthRate) * taxRevenue * maxTaxBracket / oldTaxBracket;
-oldTaxBracket = maxTaxBracket;
+return oldTaxRevenue;
+
 }
 
-public void setMaxBracket(double newMaxBracket) {
+public double setMaxBracket(double newMaxBracket) {
   oldTaxBracket = maxTaxBracket;
   maxTaxBracket = newMaxBracket;
+  return oldTaxBracket;
 }
 
 public double netExports() {
@@ -45,6 +49,12 @@ return Exports - Imports;
 public double findBudgetBalence() {
  return taxRevenue - GovernmentSpending;
 }
+
+public double[] setGovernmentSpending(double[] govSpending) {
+oldGovSpending = GovernmentSpending;
+GovernmentSpending = govSpending;
+return oldGovSpending;
+}														
 
 public double GDP() {
   return GovernmentSpending + (Exports - Imports) + Investment + consumerSpending;
