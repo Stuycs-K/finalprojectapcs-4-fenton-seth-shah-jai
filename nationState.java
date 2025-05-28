@@ -6,13 +6,13 @@ public class nationState {
  private static double GlobalGDPGrowth = .034;
   private static double year = 2024;
  //including no way to modify net exports for now but that will change
- private double consumerSpending, Investment, Exports, Imports, GDPGrowthRate, interestRate, inflationRate, taxRevenue, nationalDebt, maxTaxBracket, joy;
+ private double consumerSpending, Investment, Exports, Imports, GDPGrowthRate, interestRate, inflationRate, taxRevenue, nationalDebt, maxTaxBracket, joy, initialInterestPayment;
  private ArrayList<Bonds> listOfBonds;
 //government budget breaks down into six core sectors, manufacturing (standin for most subsidies), non healthcare welfare, healthcare, salaries (standin for most pensions and labor expenditures), millitary, anythingElse
 //means every array will range from index 0 to index 6
 private double[] govBudgetBreakDown;
 
-public nationState(double ConsumerSpending, double Investment,  double Exports, double Imports, double DefaultGDPGrowthRate, double interestRate, double inflationRate, double[] govBudgetBreakDown, double taxRevenue, double nationalDebt, double maxTaxBracket) {
+public nationState(double ConsumerSpending, double Investment,  double Exports, double Imports, double DefaultGDPGrowthRate, double interestRate, double inflationRate,double initialInterestPayment, double[] govBudgetBreakDown, double taxRevenue, double nationalDebt, double maxTaxBracket) {
   consumerSpending = ConsumerSpending;
   Investment = Investment;
   Exports = Exports;
@@ -25,6 +25,7 @@ public nationState(double ConsumerSpending, double Investment,  double Exports, 
   listOfBonds = new ArrayList<Bonds>(0);
   maxTaxBracket = maxTaxBracket;
   joy = joy;
+  initialInterestPayment = initialInterestPayment;
 
 
 
@@ -93,6 +94,32 @@ public double calcInflation(double oldTaxRevenue, double oldInterestRate, double
   return (oldTaxRevenue / taxRevenue) * .3 + (interestRate + 1) / (oldInterestRate + 1) * .3 + (governmentSpending() / oldGovSpending) * .4;
 }
 
+public double setGEGM(double newGEGM) {
+  GEGM = newGEGM;
+}
+
+
+public double bondInterestModifier(){
+  double bondInterestModifier = 1;
+  if (nationalDebt <= GDP()) {
+return bondInterestModifier;
+  }
+  else if (nationalDebt <= 1.25 * GDP()) {
+    bondInterestModifier = 1.1;
+  }
+  else if (nationalDebt <= 1.75 * GDP()) {
+    bondInterestModifier = 1.3;
+  }
+  else if (nationalDebt <= 2 * GDP()) {
+    bondInterestModifier = 1.8;
+  }
+  else {
+    bondInterestModifier = nationalDebt / GDP;
+  }
+  return bondInterestModifier;
+
+}
+
 public double setInflationRate(double newInflationRate) {
  double oldInflationRate = inflationRate;
  inflationRate = newInflationRate;
@@ -144,10 +171,15 @@ oldTotalGovernmentSpending += oldGovernmentBudget[i];
   for (int n = 0; n < govGrowthBreakdown.length; n++) {
   govGrowthSum += govGrowthBreakdown[n];
   }
-  
-  double[] arrayToReturn =  {GEGM * (govGrowthSum + ((oldInterestRate /  newinterestRate) - 1) - ((taxRevenue /  oldTaxRevenue) - 1) * (inflationRate / oldInflationRate)), GDP, oldTaxRevenue, oldInterestRate, oldGovernmentSpending}; 
+
+  double[] arrayToReturn =  {GEGM * (govGrowthSum + ((oldInterestRate /  newinterestRate) - 1) - ((taxRevenue /  oldTaxRevenue) - 1) * (inflationRate / oldInflationRate)), GDP, oldTaxRevenue, oldInterestRate, oldGovernmentSpending};
   return arrayToReturn;
 }
+
+public double calculateJoy() {
+  
+}
+
 
 public void adjustInstanceVariables(double[] governmentBudget, double newinterestRate, double newMaxBracket) {
 double[] arrayOfThingsINeed = calculateGDPGrowth(governmentBudget, newInterestRate, newMaxBracket);
@@ -160,6 +192,7 @@ double oldSumOfInvestmentConsumerAndNetExports = arrayOfThingsINeed[1] - oldGove
 double differenceToBeDistributed = newSumOfInvestmentConsumerAndNetExports - oldSumOfInvestmentConsumerAndNetExports;
 consumerSpending = consumerSpending + differenceToBeDistributed * .6;
 Investment = Investment + differenceToBeDistributed * .4;
+
 
 
 }
