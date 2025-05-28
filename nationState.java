@@ -1,7 +1,10 @@
 import java.util.*;
 public class nationState {
   //I think we have to do an ArrayListOfBonds
- private static double globalGDP, GEGM, GlobalGDPGrowth, year;
+ private static double globalGDP = 110060;
+ private static double GEGM = 1;
+ private static double GlobalGDPGrowth = .034;
+  private static double year = 2024;
  //including no way to modify net exports for now but that will change
  private double consumerSpending, Investment, Exports, Imports, GDPGrowthRate, interestRate, inflationRate, taxRevenue, nationalDebt, maxTaxBracket, joy;
  private ArrayList<Bonds> listOfBonds;
