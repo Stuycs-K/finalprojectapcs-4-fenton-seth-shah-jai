@@ -108,7 +108,7 @@ double healthcare = (govBudgetBreakDown[2] / oldGovernmentBudget[2]) * calculate
 double salaries = (govBudgetBreakDown[3] / oldGovernmentBudget[3]) * calculateGDPGrowthForOneDollarUnitOneSector(1.7, govBudgetBreakDown[3] / oldGovernmentBudget[3]);
 double millitary =  (govBudgetBreakDown[4] / oldGovernmentBudget[4]) * calculateGDPGrowthForOneDollarUnitOneSector(1.8, govBudgetBreakDown[4] / oldGovernmentBudget[4]);
 double anythingElse = (govBudgetBreakDown[5] / oldGovernmentBudget[5]) * calculateGDPGrowthForOneDollarUnitOneSector(1.9, govBudgetBreakDown[5] / oldGovernmentBudget[5]);
-double arrayToReturn = {manufacturing, welfare, healthcare, salaries, millitary, anythingElse);
+double arrayToReturn = {manufacturing, welfare, healthcare, salaries, millitary, anythingElse};
 return arrayToReturn;
 
 }
@@ -133,7 +133,10 @@ oldTotalGovernmentSpending += oldGovernmentBudget[i];
   return govGrowthSum + ((oldInterestRate /  newinterestRate) - 1) - ((taxRevenue /  oldTaxRevenue) - 1) * (inflationRate / oldInflationRate);
 }
 
+public double adjustInstanceVariables() {
 
+
+}
 
 
 
