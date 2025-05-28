@@ -129,7 +129,8 @@ return arrayToReturn;
 }
 
 // make this output an array so that way you can collect all the numbers you need to calculate Joy
-public double calculateGDPGrowth(double[] governmentBudget, double newinterestRate, double newMaxBracket) {
+public double[] calculateGDPGrowth(double[] governmentBudget, double newinterestRate, double newMaxBracket) {
+  double GDP = GDP();
   double oldTaxRevenue = updateTaxRevenueWithoutGrowth(newMaxBracket);
   double[] oldGovernmentBudget = setGovernmentSpending(governmentBudget);
   double oldInterestRate = setInterestRate(newinterestRate);
@@ -144,14 +145,21 @@ oldTotalGovernmentSpending += oldGovernmentBudget[i];
   govGrowthSum += govGrowthBreakdown[n];
   }
   
-  
-  return GEGM * (govGrowthSum + ((oldInterestRate /  newinterestRate) - 1) - ((taxRevenue /  oldTaxRevenue) - 1) * (inflationRate / oldInflationRate));
+  double[] arrayToReturn =  {GEGM * (govGrowthSum + ((oldInterestRate /  newinterestRate) - 1) - ((taxRevenue /  oldTaxRevenue) - 1) * (inflationRate / oldInflationRate)), GDP, oldTaxRevenue, oldInterestRate, oldGovernmentSpending}; 
+  return arrayToReturn;
 }
 
 public void adjustInstanceVariables(double[] governmentBudget, double newinterestRate, double newMaxBracket) {
-GDPGrowthRate = calculateGDPGrowth(governmentBudget, newinterestRate,newMaxBracket);
+double[] arrayOfThingsINeed = calculateGDPGrowth(governmentBudget, newInterestRate, newMaxBracket);
+GDPGrowthRate = arrayOfThingsINeed[0];
 taxRevenue = taxRevenue * (1 + GDPGrowthRate);
-
+double newGDP = arrayOfThingsINeed[1] * GDPGrowthRate;
+//net Exports isn't included because it remains constant while this is only a domestic economic simulator, will figure out the implications of Net Exports in later reworks after minimum viable product is achieved
+double newSumOfInvestmentConsumerAndNetExports = newGDP - governmentSpending();
+double oldSumOfInvestmentConsumerAndNetExports = arrayOfThingsINeed[1] - oldGovernmentSpending;
+double differenceToBeDistributed = newSumOfInvestmentConsumerAndNetExports - oldSumOfInvestmentConsumerAndNetExports;
+consumerSpending = consumerSpending + differenceToBeDistributed * .6;
+Investment = Investment + differenceToBeDistributed * .4;
 
 
 }
