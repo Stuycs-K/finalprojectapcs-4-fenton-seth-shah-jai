@@ -12,7 +12,7 @@ public class nationState {
 //means every array will range from index 0 to index 6
 private double[] govBudgetBreakDown;
 
-public nationState(double ConsumerSpending, double Investment, double GovernmentSpending, double Exports, double Imports, double DefaultGDPGrowthRate, double interestRate, double inflationRate, double[] govBudgetBreakDown, double taxRevenue, double nationalDebt, double maxTaxBracket) {
+public nationState(double ConsumerSpending, double Investment,  double Exports, double Imports, double DefaultGDPGrowthRate, double interestRate, double inflationRate, double[] govBudgetBreakDown, double taxRevenue, double nationalDebt, double maxTaxBracket) {
   consumerSpending = ConsumerSpending;
   Investment = Investment;
   Exports = Exports;
@@ -30,10 +30,10 @@ public nationState(double ConsumerSpending, double Investment, double Government
 
 }
 
-public double updateTaxRevenue(double newMaxBracket) {
+public double updateTaxRevenueWithoutGrowth(double newMaxBracket) {
 oldTaxBracket = setMaxBracket(newMaxBracket);
 oldTaxRevenue = taxRevenue;
-taxRevenue = (1 + GDPGrowthRate) * taxRevenue * maxTaxBracket / oldTaxBracket;
+taxRevenue = taxRevenue * maxTaxBracket / oldTaxBracket;
 return oldTaxRevenue;
 
 }
@@ -110,14 +110,19 @@ public double calculateGDPGrowthToMultiplyBySpendingRatio (double initialCoeffic
 return initialCoefficent / (totalPercentChange  * 4 + 8);
 }
 
+
+public double returnSectorGrowth(int index, double coefficent) {
+ return ((govBudgetBreakDown[index] - oldGovernmentBudget[index])/ oldGovernmentBudget[index]) * calculateGDPGrowthToMultiplyBySpendingRatio(coefficent, (govBudgetBreakDown[index] - oldGovernmentBudget[index])/ oldGovernmentBudget[index]);
+}
+
 public double calcGDPGrowthBySector(double[] oldGovernmentBudget) {
   //government budget breaks down into six core sectors, manufacturing (standin for most subsidies), non healthcare welfare, healthcare, salaries (standin for most pensions and labor expenditures), millitary, anythingElse
-double manufacturing = ((govBudgetBreakDown[0] - oldGovernmentBudget[0])/ oldGovernmentBudget[0]) * calculateGDPGrowthToMultiplyBySpendingRatio(2.1, (govBudgetBreakDown[0] - oldGovernmentBudget[0])/ oldGovernmentBudget[0]);
-double welfare =  ((govBudgetBreakDown[1] - oldGovernmentBudget[1])/ oldGovernmentBudget[1]) * calculateGDPGrowthToMultiplyBySpendingRatio(1.3, (govBudgetBreakDown[1] - oldGovernmentBudget[1])/ oldGovernmentBudget[1]);
-double healthcare =  (govBudgetBreakDown[2] - oldGovernmentBudget[2])/ oldGovernmentBudget[2] * calculateGDPGrowthToMultiplyBySpendingRatio(1.4, (govBudgetBreakDown[2] - oldGovernmentBudget[2])/ oldGovernmentBudget[2]);
-double salaries = govBudgetBreakDown[3] - oldGovernmentBudget[3])/ oldGovernmentBudget[3]) * calculateGDPGrowthToMultiplyBySpendingRatio(1.7, (govBudgetBreakDown[3] - oldGovernmentBudget[3])/ oldGovernmentBudget[3]);
-double millitary = (govBudgetBreakDown[4] - oldGovernmentBudget[4])/ oldGovernmentBudget[4] * calculateGDPGrowthToMultiplyBySpendingRatio(1.8,(govBudgetBreakDown[4] - oldGovernmentBudget[4])/ oldGovernmentBudget[4]);
-double anythingElse = (govBudgetBreakDown[5] - oldGovernmentBudget[5])/ oldGovernmentBudget[5] * calculateGDPGrowthToMultiplyBySpendingRatio(1.9,(govBudgetBreakDown[5] - oldGovernmentBudget[5])/ oldGovernmentBudget[5]);
+double manufacturing = returnSectorGrowth(0, 2.1);
+double welfare = returnSectorGrowth(1, 1.3);
+double healthcare =  returnSectorGrowth(2, 1.4);
+double salaries = returnSectorGrowth(3, 1.7);
+double millitary = returnSectorGrowth(4, 1.8);
+double anythingElse = returnSectorGrowth(5, 1.9);
 double arrayToReturn = {manufacturing, welfare, healthcare, salaries, millitary, anythingElse};
 return arrayToReturn;
 
@@ -125,7 +130,7 @@ return arrayToReturn;
 
 
 public double calculateGDPGrowth(double[] governmentBudget, double newinterestRate, double newMaxBracket) {
-  oldTaxRevenue = updateTaxRevenue(newMaxBracket);
+  oldTaxRevenue = updateTaxRevenueWithoutGrowth(newMaxBracket);
   oldGovernmentBudget = setGovernmentSpending(governmentBudget);
   oldInterestRate = setInterestRate(newinterestRate);
   double oldTotalGovernmentSpending = 0;
@@ -144,7 +149,10 @@ oldTotalGovernmentSpending += oldGovernmentBudget[i];
 }
 
 public double adjustInstanceVariables(double[] governmentBudget, double newinterestRate, double newMaxBracket) {
-calculateGDPGrowth(governmentBudget, newinterestRate,newMaxBracket);
+GDPGrowthRate = calculateGDPGrowth(governmentBudget, newinterestRate,newMaxBracket);
+taxRevenue = taxRevenue * GDPGrowthRate;
+
+
 
 }
 
