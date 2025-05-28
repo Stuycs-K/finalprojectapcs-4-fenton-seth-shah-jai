@@ -128,7 +128,7 @@ return arrayToReturn;
 
 }
 
-
+// make this output an array so that way you can collect all the numbers you need to calculate Joy
 public double calculateGDPGrowth(double[] governmentBudget, double newinterestRate, double newMaxBracket) {
   double oldTaxRevenue = updateTaxRevenueWithoutGrowth(newMaxBracket);
   double[] oldGovernmentBudget = setGovernmentSpending(governmentBudget);
