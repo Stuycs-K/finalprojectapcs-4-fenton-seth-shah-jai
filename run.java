@@ -52,7 +52,7 @@ public class run{
       nation.setGovernmentSpending(bud);
 
     }
-    
+
   }
   public boolean initializeNation(){
     nation=Germany;
@@ -77,6 +77,7 @@ public class run{
         GrabUserInput();
         ModifyNations();
       }
+      System.out.println("L + ratio + you got couped");
   }
   public static void main(String[] args) {
     run newSim=new run();
