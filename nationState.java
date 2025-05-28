@@ -14,7 +14,6 @@ public nationState(double ConsumerSpending, double Investment, double Government
   Investment = Investment;
   Exports = Exports;
   Imports = Imports;
- private ArrayList<Bonds> listOfB
   GDPGrowthRate = DefaultGDPGrowthRate;
   interestRate = interestRate;
   inflationRate = inflationRate;
@@ -91,13 +90,26 @@ public double calcInflation(double oldTaxRevenue, double oldInterestRate, double
   return (oldTaxRevenue / taxRevenue) * .3 + (interestRate + 1) / (oldInterestRate + 1) * .3 + (governmentSpending() / oldGovSpending) * .4);
 }
 
+public double setInflationRate(double newInflationRate) {
+ oldInflationRate = inflationRate;
+ inflationRate = newInflationRate;
+ return oldInflationRate;
+}
+
 public double calculateGDPGrowthForOneDollarUnitOneSector  (double initialCoefficent, double totalPercentChange) {
-return initialCoefficent / (totalPercentChange + 1);
+return initialCoefficent / (totalPercentChange * 4 + 8);
 }
 
 public double calcGDPGrowthBySector(double[] oldGovernmentBudget) {
   //government budget breaks down into six core sectors, manufacturing (standin for most subsidies), non healthcare welfare, healthcare, salaries (standin for most pensions and labor expenditures), millitary, anythingElse
-
+double manufacturing = (govBudgetBreakDown[0] / oldGovernmentBudget[0]) * calculateGDPGrowthForOneDollarUnitOneSector(2.1, govBudgetBreakDown[0] / oldGovernmentBudget[0]);
+double welfare = (govBudgetBreakDown[1] / oldGovernmentBudget[1]) * calculateGDPGrowthForOneDollarUnitOneSector(1.3, govBudgetBreakDown[1] / oldGovernmentBudget[1]);
+double healthcare = (govBudgetBreakDown[2] / oldGovernmentBudget[2]) * calculateGDPGrowthForOneDollarUnitOneSector(1.4, govBudgetBreakDown[2] / oldGovernmentBudget[2]);
+double salaries = (govBudgetBreakDown[3] / oldGovernmentBudget[3]) * calculateGDPGrowthForOneDollarUnitOneSector(1.7, govBudgetBreakDown[3] / oldGovernmentBudget[3]);
+double millitary =  (govBudgetBreakDown[4] / oldGovernmentBudget[4]) * calculateGDPGrowthForOneDollarUnitOneSector(1.8, govBudgetBreakDown[4] / oldGovernmentBudget[4]);
+double anythingElse = (govBudgetBreakDown[5] / oldGovernmentBudget[5]) * calculateGDPGrowthForOneDollarUnitOneSector(1.9, govBudgetBreakDown[5] / oldGovernmentBudget[5]);
+double arrayToReturn = {manufacturing, welfare, healthcare, salaries, millitary, anythingElse);
+return arrayToReturn;
 
 }
 
@@ -110,9 +122,18 @@ public double calculateGDPGrowth(double[] governmentBudget, double newinterestRa
   for (int i = 0; i < oldGovernmentBudget.length; i++) {
 oldTotalGovernmentSpending += oldGovernmentBudget[i];
   }
-  calcGDPGrowthBySector()
-  return
+    oldInflationRate = setInflationRate(calcInflation(oldTaxRevenue, oldInterestRate,oldTotalGovernmentSpending));
+  double[] govGrowthBreakdown = calcGDPGrowthBySector(oldGovernmentBudget);
+  double govGrowthSum = 0;
+  for (int n = 0; n < govGrowthBreakdown.length; n++) {
+  govGrowthSum += govGrowthBreakdown[n];
+  }
+  
+  
+  return govGrowthSum + ((oldInterestRate /  newinterestRate) - 1) - ((taxRevenue /  oldTaxRevenue) - 1) * (inflationRate / oldInflationRate);
 }
+
+
 
 
 
