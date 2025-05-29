@@ -49,7 +49,7 @@ return joy;
 
 public double nationalDebt() {
 double nationalDebt = 0;
-for (int i = 0; i < listOfBonds.length; i++) {
+for (int i = 0; i < listOfBonds.size(); i++) {
 nationalDebt += listOfBonds.get(i).getValue();
 
 }
@@ -59,7 +59,7 @@ return nationalDebt;
 
 public double interestPayment() {
 double interestPayments = 0;
-for (int i = 0; i < listOfBonds.length; i++) {
+for (int i = 0; i < listOfBonds.size(); i++) {
 interestPayments += listOfBonds.get(i).getValue() * listOfBonds.get(i).getInterestRate();
 
 }
@@ -161,6 +161,9 @@ public double calculateGDPGrowthToMultiplyBySpendingRatio (double initialCoeffic
 return initialCoefficent / (totalPercentChange  * 4 + 8);
 }
 
+public ArrayList<Bonds> getListOfBonds() {
+return listOfBonds;
+}
 
 public double returnSectorGrowth(int index, double coefficent, double[] oldGovernmentBudget) {
  return ((govBudgetBreakDown[index] - oldGovernmentBudget[index])/ oldGovernmentBudget[index]) * calculateGDPGrowthToMultiplyBySpendingRatio(coefficent, (govBudgetBreakDown[index] - oldGovernmentBudget[index])/ oldGovernmentBudget[index]);
@@ -196,7 +199,7 @@ oldTotalGovernmentSpending += oldGovernmentBudget[i];
   govGrowthSum += govGrowthBreakdown[n];
   }
 
-  double[] arrayToReturn =  {GEGM * (govGrowthSum + ((oldInterestRate /  newinterestRate) - 1) - ((taxRevenue /  oldTaxRevenue) - 1) * (inflationRate / oldInflationRate)), GDP, oldTaxRevenue, oldInterestRate, oldGovernmentSpending};
+  double[] arrayToReturn =  {GEGM * (govGrowthSum + ((oldInterestRate /  newinterestRate) - 1) - ((taxRevenue /  oldTaxRevenue) - 1) * (inflationRate / oldInflationRate)), GDP, oldTaxRevenue, oldInterestRate, oldTotalGovernmentSpending};
   return arrayToReturn;
 }
 
@@ -205,7 +208,7 @@ public double calculateJoy(double gdpGrowth, double taxChange, double inflationR
 }
 
 public static void issueBonds(nationState newNationState) {
-listOfBonds.add(new Bonds(newNationState));
+newNationState.getListOfBonds().add(new Bonds(newNationState));
 
 }
 
@@ -220,23 +223,23 @@ i--;
 }
 
 }
-return valueOfBondsToRepay;
+return valueOfOldBondsToRepay;
 
 }
 
 
 public void adjustInstanceVariables(double[] governmentBudget, double newinterestRate, double newMaxBracket, nationState nationCurrentlyModelled) {
-double[] arrayOfThingsINeed = calculateGDPGrowth(governmentBudget, newInterestRate, newMaxBracket);
+double[] arrayOfThingsINeed = calculateGDPGrowth(governmentBudget, newinterestRate, newMaxBracket);
 GDPGrowthRate = arrayOfThingsINeed[0];
 taxRevenue = taxRevenue * (1 + GDPGrowthRate);
 double newGDP = arrayOfThingsINeed[1] * GDPGrowthRate;
 //net Exports isn't included because it remains constant while this is only a domestic economic simulator, will figure out the implications of Net Exports in later reworks after minimum viable product is achieved
 double newSumOfInvestmentConsumerAndNetExports = newGDP - governmentSpending();
-double oldSumOfInvestmentConsumerAndNetExports = arrayOfThingsINeed[1] - oldGovernmentSpending;
+double oldSumOfInvestmentConsumerAndNetExports = arrayOfThingsINeed[1] - arrayOfThingsINeed[4];
 double differenceToBeDistributed = newSumOfInvestmentConsumerAndNetExports - oldSumOfInvestmentConsumerAndNetExports;
 consumerSpending = consumerSpending + differenceToBeDistributed * .6;
 Investment = Investment + differenceToBeDistributed * .4;
-joy = calculateJoy(GDPGrowthRate, (taxRevenue - arrayOfThingsINeed[2]) - 1, nationalDebt());
+joy = calculateJoy(GDPGrowthRate, (taxRevenue - arrayOfThingsINeed[2]) - 1,inflationRate, nationalDebt());
 GlobalGDPGrowth = GlobalGDPGrowth * GEGM;
 globalGDP = GlobalGDPGrowth * globalGDP;
 year++;
