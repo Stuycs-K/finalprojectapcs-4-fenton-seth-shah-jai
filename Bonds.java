@@ -4,7 +4,7 @@ public class Bonds {
   public Bonds(nationState nation) {
     interestRate = nation.getInterestRate() * nation.bondInterestModifier();
     maturationTimeline = 20;
-    valueOfBonds = nation.getSpending() - nation.getTaxRevenue();
+    valueOfBonds = nation.getSpending() - nation.getspendableTaxRevenue();
   }
   
   public Bonds(double valueOfBonds, double interestRate) {
