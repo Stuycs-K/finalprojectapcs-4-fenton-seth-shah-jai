@@ -3,7 +3,7 @@ public class run{
   private String userIn;
   private Double budgetNum;
   private nationState nation;
-  nationState Germany=new nationState(0, 0, 0, 0, 0, 0, 0, new double[]{0, 0, 0, 0, 0, 0}, 0, 0, 0);
+  nationState Germany=new nationState(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0}, 0.0, 0.0, 0.0);
 
 
   public void GrabUserInput(){
@@ -19,7 +19,7 @@ public class run{
     GrabUserNum();
     if(budgetNum.equals(0.0)){
       System.out.println("Nope, its 1");
-      budgetNum=1;
+      budgetNum=1.0;
     }
     if(userIn.equals("Taxes")){
       nation.updateTaxRevenue(budgetNum);
@@ -62,7 +62,7 @@ public class run{
   public void GrabConditions(){
     System.out.println("Tax Rev: "+ nation.getTaxRevenue()+"\nConsumerSpending: "
       +nation.getConsumerSpending()+"\nGDPGrowthRate: "+nation.getGDPGrowthRate()+
-      "\nInflation & Debt: "+ nation.getinflationRate()+" & "+nation.getNationalDebt()
+      "\nInflation & Debt: "+ nation.getinflationRate()+" & "+nation.nationalDebt()
       +"\nJoy: "+nation.getJoy());
 
   }

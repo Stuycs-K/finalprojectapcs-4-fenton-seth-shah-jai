@@ -11,14 +11,14 @@ public class Events{
             while(fileScan.hasNextLine()){
                 String line=fileScan.nextLine();
                 String[] inputs=line.split(",");
-                Events(inputs[0],Double.parseDouble(inputs[1]));
+                Event(inputs[0],Double.parseDouble(inputs[1]));
             }
         }catch(FileNotFoundException skill){
             System.out.println("File not found. try again");
         }
     }
 
-    public Events (String EventText, double changeRates){
+    public void Event (String EventText, double changeRates){
         events.add(EventText);
         changeRate.add(changeRates);
     }
@@ -39,6 +39,6 @@ public class Events{
         Random rand=new Random();
         int happening=rand.nextInt(events.size());
         System.out.println(events.get(happening));
-        nation.setGEGM(changeRate.get(happening)*nation.get(GEGM));
+        nation.setGEGM(changeRate.get(happening)*nation.getGEGM());
     }
 }
