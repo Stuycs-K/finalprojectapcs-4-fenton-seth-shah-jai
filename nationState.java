@@ -229,6 +229,9 @@ return valueOfOldBondsToRepay;
 
 }
 
+public double getSpendableTaxRevenue() {
+return spendableTaxRevenue;
+}
 
 public void adjustInstanceVariables(double[] governmentBudget, double newinterestRate, double newMaxBracket, nationState nationCurrentlyModelled) {
 double[] arrayOfThingsINeed = calculateGDPGrowth(governmentBudget, newinterestRate, newMaxBracket);
