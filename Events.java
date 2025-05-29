@@ -18,7 +18,7 @@ public class Events{
         }
     }
 
-    public Events (String EventText, double changeRates){
+    public void Events (String EventText, double changeRates){
         events.add(EventText);
         changeRate.add(changeRates);
     }
@@ -39,6 +39,6 @@ public class Events{
         Random rand=new Random();
         int happening=rand.nextInt(events.size());
         System.out.println(events.get(happening));
-        nation.setGEGM(changeRate.get(happening)*nation.get(GEGM));
+        nation.setGEGM(changeRate.get(happening)*nation.getGEGM());
     }
 }

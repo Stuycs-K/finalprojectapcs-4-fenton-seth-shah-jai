@@ -256,30 +256,33 @@ spendableTaxRevenue = spendableTaxRevenue - removeOldBonds();
 issueBonds(nationCurrentlyModelled);
 }
 
-
-
-
-
-
-
-public void changeDefaultGDPGrowthRate(double change){
-  DefaultGDPGrowthRate+=change;
-
+public double getConsumerSpending(){
+  return consumerSpending;
 }
 
-public void changeGDP(double change){
-  gdpModifier+=change;
+public double getGDPGrowthRate(){
+  return GDPGrowthRate;
+}
+
+public double getinflationRate(){
+  return inflationRate;
+}
+
+public double[] getGovBudgetBreakDown(){
+  return govBudgetBreakDown;
+}
+
+public double getGEGM(){
+  return GEGM;
 }
 
 public void happened(){
   Random rand=new Random();
-  double happen=rand.double();
-  if(happened<0.2){
-    //Access the bad list of events
+  double happen=rand.nextDouble();
+  if(happen<0.3){
+    //Access the  list of events
   }
-  else if(happened>0.9){
-    //Access to the good list of events
-  }
+
   else{
     System.out.println("Nothing ever happens");
   }
