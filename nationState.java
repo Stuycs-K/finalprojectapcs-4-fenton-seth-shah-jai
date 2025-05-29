@@ -12,7 +12,7 @@ public class nationState {
 //means every array will range from index 0 to index 6
 private double[] govBudgetBreakDown;
 
-public nationState(double ConsumerSpending, double Investment,  double Exports, double Imports, double DefaultGDPGrowthRate, double interestRate, double inflationRate,double initialInterestPayment, double[] govBudgetBreakDown, double taxRevenue, double nationalDebt, double maxTaxBracket) {
+public nationState(double ConsumerSpending, double Investment,  double Exports, double Imports, double DefaultGDPGrowthRate, double interestRate, double inflationRate,double initialInterestPayment, double[] govBudgetBreakDown, double taxRevenue, double initialnationalDebt, double maxTaxBracket) {
   consumerSpending = ConsumerSpending;
   Investment = Investment;
   Exports = Exports;
@@ -26,8 +26,8 @@ public nationState(double ConsumerSpending, double Investment,  double Exports, 
   maxTaxBracket = maxTaxBracket;
   joy = joy;
   initialInterestPayment = initialInterestPayment;
-  nationalDebt = nationalDebt;
-  listOfBonds.add(new 
+  initialnationalDebt = initialnationalDebt;
+  listOfBonds.add(new Bonds(initialnationalDebt, initialInterestPayment / initialnationalDebt));
   
 
 
@@ -44,6 +44,27 @@ return oldTaxRevenue;
 
 public double getJoy() {
 return joy;
+}
+
+
+public double nationalDebt() {
+double nationalDebt = 0;
+for (int i = 0; i < listOfBonds.length; i++) {
+nationalDebt += listOfBonds.get(i).getValue();
+
+}
+return nationalDebt;
+
+}
+
+public double interestPayment() {
+double interestPayments = 0;
+for (int i = 0; i < listOfBonds.length; i++) {
+interestPayments += listOfBonds.get(i).getValue() * listOfBonds.get(i).getInterestRate();
+
+}
+return interestPayments;
+
 }
 
 public double setMaxBracket(double newMaxBracket) {
@@ -104,20 +125,20 @@ public void setGEGM(double newGEGM) {
 
 public double bondInterestModifier(){
   double bondInterestModifier = 1;
-  if (nationalDebt <= GDP()) {
+  if (nationalDebt() <= GDP()) {
 return bondInterestModifier;
   }
-  else if (nationalDebt <= 1.25 * GDP()) {
+  else if (nationalDebt() <= 1.25 * GDP()) {
     bondInterestModifier = 1.1;
   }
-  else if (nationalDebt <= 1.75 * GDP()) {
+  else if (nationalDebt() <= 1.75 * GDP()) {
     bondInterestModifier = 1.3;
   }
-  else if (nationalDebt <= 2 * GDP()) {
+  else if (nationalDebt() <= 2 * GDP()) {
     bondInterestModifier = 1.8;
   }
   else {
-    bondInterestModifier = nationalDebt / GDP();
+    bondInterestModifier = nationalDebt() / GDP();
   }
   return bondInterestModifier;
 
@@ -183,8 +204,23 @@ public double calculateJoy(double gdpGrowth, double taxChange, double inflationR
   return joy * ((1 + gdpGrowth * 3) - (taxChange + inflationRate + nationalDebt / GDP() / 40));
 }
 
-public static double issueBonds(nationState newNationState) {
+public static void issueBonds(nationState newNationState) {
 listOfBonds.add(new Bonds(newNationState));
+
+}
+
+public double removeOldBonds() {
+double valueOfOldBondsToRepay = 0;
+for (int i = 0; i < listOfBonds.size(); i++) {
+listOfBonds.get(i).decrementMaturationTimeline();
+if (listOfBonds.get(i).getMaturationTimeline() == 0) {
+valueOfOldBondsToRepay += listOfBonds.get(i).getValue();
+listOfBonds.remove(i);
+i--;
+}
+
+}
+return valueOfBondsToRepay;
 
 }
 
@@ -200,12 +236,16 @@ double oldSumOfInvestmentConsumerAndNetExports = arrayOfThingsINeed[1] - oldGove
 double differenceToBeDistributed = newSumOfInvestmentConsumerAndNetExports - oldSumOfInvestmentConsumerAndNetExports;
 consumerSpending = consumerSpending + differenceToBeDistributed * .6;
 Investment = Investment + differenceToBeDistributed * .4;
-joy = calculateJoy(GDPGrowthRate, (taxRevenue - arrayOfThingsINeed[2]) - 1, nationalDebt);
+joy = calculateJoy(GDPGrowthRate, (taxRevenue - arrayOfThingsINeed[2]) - 1, nationalDebt());
 GlobalGDPGrowth = GlobalGDPGrowth * GEGM;
 globalGDP = GlobalGDPGrowth * globalGDP;
 year++;
+taxRevenue = taxRevenue - interestPayment();
+taxRevenue = taxRevenue - removeOldBonds();
+
+
 issueBonds(nationCurrentlyModelled);
-double totalInterestPayment = initialInterestPayment;
+
 
 
 
