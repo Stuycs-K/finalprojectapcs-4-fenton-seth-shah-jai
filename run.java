@@ -1,7 +1,7 @@
 import java.util.*;
 public class run{
-  private String userIn;
-  private Double budgetNum;
+  private double[] userIn;
+  private Double taxBrack, interestNum;
   private nationState nation;
   nationState Germany=new nationState(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0}, 0.0, 0.0, 0.0, 0.0);
 
@@ -9,24 +9,35 @@ public class run{
 
   public void GrabUserInput(){
     Scanner read=new Scanner(System.in);
-    userIn=read.nextLine();
+    String reading=read.nextLine();
+
   }
   public void GrabUserNum(){
     Scanner read=new Scanner(System.in);
-    budgetNum=read.nextDouble();
+    interestNum=read.nextDouble();
+  }
+  public void GrabTaxBrak(){
+    Scanner read=new Scanner(System.in);
+    taxBrak=read.nextDouble();
   }
   public void ModifyNations(){
     System.out.println("And how much?");
     GrabUserNum();
+    System.out.println("What is your new max Tax Bracket?");
+    GrabTaxBrak();
     if(budgetNum.equals(0.0)){
       System.out.println("Nope, its 1");
       budgetNum=1.0;
     }
+    adjustInstanceVariables(userIn,interestNum,taxBrak, nation);
+//adjustInstanceVariables(double[] governmentBudget, double newinterestRate, double newMaxBracket, nation);
+
+/*
     if(userIn.equals("Taxes")){
       nation.updateTaxRevenue(budgetNum);
     }
     else if(userIn.equals("Interest")){
-      nation.setInterestRate(budgetNum);
+      adjustInstanceVariables(governmentBudget, budgetNum, double newMaxBracket, nation);
     }
     else if(userIn.equals("Budget")){
       System.out.println("Which line item? Manufacturing, Welfare, Healthcare, Salaries, Military, Other?");
@@ -53,7 +64,7 @@ public class run{
       nation.setGovernmentSpending(bud);
 
     }
-
+*/
   }
   public boolean initializeNation(){
     nation=Germany;
@@ -74,9 +85,10 @@ public class run{
       initializeNation();
       while(nation.getJoy()>0){
         GrabConditions();
-        System.out.println("Your Move");
+        System.out.println("Your Move. What are you changing the budget to. Write out the list.");
         GrabUserInput();
         ModifyNations();
+        happened();
       }
       System.out.println("L + ratio + you got couped");
   }

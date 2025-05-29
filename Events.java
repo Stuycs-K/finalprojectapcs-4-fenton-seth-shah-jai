@@ -1,10 +1,11 @@
 import java.util.*;
 import java.io.*;
 public class Events{
-    private ArrayList<String> events;
-    private ArrayList<Double> changeRate;
+    private static ArrayList<String> events;
+    private static ArrayList<Double> changeRate;
+    private static boolean hasMade=true;
 
-    public void eventMaker(String filename){
+    public static void eventMaker(String filename){
         try{
             Scanner fileScan=new Scanner(new File(filename));
             int i=0;
@@ -18,7 +19,7 @@ public class Events{
         }
     }
 
-    public void Event (String EventText, double changeRates){
+    public static void Event (String EventText, double changeRates){
         events.add(EventText);
         changeRate.add(changeRates);
     }
@@ -35,7 +36,12 @@ public class Events{
         return EventText;
     }
 */
-    public void EventHappens(nationState nation){
+
+    public static void EventHappens(nationState nation){
+        if(hasMade){
+          eventMaker("Events.txt");
+          hasMade=false;
+        }
         Random rand=new Random();
         int happening=rand.nextInt(events.size());
         System.out.println(events.get(happening));
