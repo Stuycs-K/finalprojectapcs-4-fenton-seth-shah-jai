@@ -17,7 +17,7 @@ public class run{
   public void ModifyNations(){
     System.out.println("And how much?");
     GrabUserNum();
-    if(budgetNum==0){
+    if(budgetNum.equals(0.0)){
       System.out.println("Nope, its 1");
       budgetNum=1;
     }
@@ -30,7 +30,7 @@ public class run{
     else if(userIn.equals("Budget")){
       System.out.println("Which line item? Manufacturing, Welfare, Healthcare, Salaries, Military, Other?");
       GrabUserInput();
-      double bud=nation.getGovBudgetBreakDown();
+      double[] bud=nation.getGovBudgetBreakDown();
       if(userIn.equals("Manufacturing")){
         bud[0]+=budgetNum;
       }
@@ -81,7 +81,7 @@ public class run{
   }
   public static void main(String[] args) {
     run newSim=new run();
-    sim.run();
+    newSim.run();
   }
     //Take the function for calculateGDPgrowth and use use userinputs
     //Add handling for bad inputs
