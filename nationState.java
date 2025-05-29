@@ -49,10 +49,7 @@ public double getSpending() {
   return GovernmentSpending;
 }
 
-<<<<<<< Updated upstream
-public void changeDefaultGDPGrowthRate(double change){
-  DefaultGDPGrowthRate+=change;
-=======
+
 
 public double calcInflation(double oldTaxRevenue, double oldInterestRate, double oldGovSpending) {
   return (oldTaxRevenue / taxRevenue) * .3 + (interestRate + 1) / (oldInterestRate + 1) * .3 + (governmentSpending() / oldGovSpending) * .4;
@@ -192,7 +189,6 @@ issueBonds(nationCurrentlyModelled);
 
 public double getConsumerSpending(){
   return consumerSpending;
->>>>>>> Stashed changes
 }
 
 public double getGDPGrowthRate(){
