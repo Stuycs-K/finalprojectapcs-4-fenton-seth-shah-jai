@@ -1,0 +1,12 @@
+The Stock Market just shot up!,0.5,Budget
+A small economic boom just occurred!,0.5,Budget
+A big economic boom just occurred,0.5,Budget
+A lot of investment poured into the country,0.5,Budget
+Someone placed a lot of orders for cheap goods,0.5,Budget
+Some guy ordered thousands of Toyotas from your manufacturers,0.5,Budget
+The Greeks had another credit crisis!,0.5,Budget
+A bunch of subprime mortgages just went bust,0.5,Budget
+The housing market just crashed,0.5,Budget
+You have been embargoed for some unknown reason,0.5,Budget
+A bunch of very high profile fraud cases have occurred,0.5,Budget
+Someone defrauded a third of the country,0.5,Budget

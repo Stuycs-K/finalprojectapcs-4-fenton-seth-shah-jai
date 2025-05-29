@@ -114,6 +114,7 @@ public double getSpending() {
   return governmentSpending();
 }
 
+
 public double calcInflation(double oldTaxRevenue, double oldInterestRate, double oldGovSpending) {
   return (oldTaxRevenue / taxRevenue) * .3 + (interestRate + 1) / (oldInterestRate + 1) * .3 + (governmentSpending() / oldGovSpending) * .4;
 }
@@ -248,16 +249,35 @@ taxRevenue = taxRevenue - removeOldBonds();
 
 
 issueBonds(nationCurrentlyModelled);
-
-
-
-
-
-
-
 }
 
 
 
+
+
+
+
+public void changeDefaultGDPGrowthRate(double change){
+  DefaultGDPGrowthRate+=change;
+
+}
+
+public void changeGDP(double change){
+  gdpModifier+=change;
+}
+
+public void happened(){
+  Random rand=new Random();
+  double happen=rand.double();
+  if(happened<0.2){
+    //Access the bad list of events
+  }
+  else if(happened>0.9){
+    //Access to the good list of events
+  }
+  else{
+    System.out.println("Nothing ever happens");
+  }
+}
 
 }
