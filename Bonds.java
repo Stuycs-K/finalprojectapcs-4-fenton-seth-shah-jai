@@ -24,4 +24,10 @@ return interestRate;
 public double getMaturationTimeline() {
 return maturationTimeline;
 }
+
+public void decrementMaturationTimeline() {
+maturationTimeline = maturationTimeline - 1;
+}
+
+
 }
