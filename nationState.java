@@ -31,7 +31,7 @@ public double findBudgetBalence() {
 }
 
 public double GDP() {
-  return GovernmentSpending + (Exports - Imports) + Investment + consumerSpending;
+  return GovernmentSpending + (Exports - Imports) + Investment + consumerSpending + gdpModifier;
 }
 
 public double RealGDP() {
@@ -49,8 +49,26 @@ public double getSpending() {
   return GovernmentSpending;
 }
 
+public void changeDefaultGDPGrowthRate(double change){
+  DefaultGDPGrowthRate+=change;
+}
 
+public void changeGDP(double change){
+  gdpModifier+=change;
+}
 
-
+public void happened(){
+  Random rand=new Random();
+  double happen=rand.double();
+  if(happened<0.2){
+    //Access the bad list of events
+  }
+  else if(happened>0.9){
+    //Access to the good list of events
+  }
+  else{
+    System.out.println("Nothing ever happens");
+  }
+}
 
 }
