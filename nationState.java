@@ -6,7 +6,7 @@ public class nationState {
  private static double GlobalGDPGrowth = .034;
   private static double year = 2024;
  //including no way to modify net exports for now but that will change
- private double consumerSpending, Investment, Exports, Imports, GDPGrowthRate, interestRate, inflationRate, taxRevenue, nationalDebt, maxTaxBracket, joy, initialInterestPayment;
+ private double consumerSpending, Investment, Exports, Imports, GDPGrowthRate, interestRate, inflationRate, taxRevenue,initialnationalDebt, maxTaxBracket, joy, initialInterestPayment;
  private ArrayList<Bonds> listOfBonds;
 //government budget breaks down into six core sectors, manufacturing (standin for most subsidies), non healthcare welfare, healthcare, salaries (standin for most pensions and labor expenditures), millitary, anythingElse
 //means every array will range from index 0 to index 6
