@@ -6,13 +6,13 @@ public class nationState {
  private static double GlobalGDPGrowth = .034;
   private static double year = 2024;
  //including no way to modify net exports for now but that will change
- private double consumerSpending, Investment, Exports, Imports, GDPGrowthRate, interestRate, inflationRate, taxRevenue,initialnationalDebt, maxTaxBracket, joy, initialInterestPayment;
+ private double consumerSpending, Investment, Exports, Imports, GDPGrowthRate, interestRate, inflationRate, taxRevenue,initialnationalDebt, maxTaxBracket, joy, initialInterestPayment, spendableTaxRevenue;
  private ArrayList<Bonds> listOfBonds;
 //government budget breaks down into six core sectors, manufacturing (standin for most subsidies), non healthcare welfare, healthcare, salaries (standin for most pensions and labor expenditures), millitary, anythingElse
 //means every array will range from index 0 to index 6
 private double[] govBudgetBreakDown;
 
-public nationState(double ConsumerSpending, double Investment,  double Exports, double Imports, double DefaultGDPGrowthRate, double interestRate, double inflationRate,double initialInterestPayment, double[] govBudgetBreakDown, double taxRevenue, double initialnationalDebt, double maxTaxBracket) {
+public nationState(double ConsumerSpending, double Investment,  double Exports, double Imports, double DefaultGDPGrowthRate, double interestRate, double inflationRate,double initialInterestPayment, double[] govBudgetBreakDown, double taxRevenue, double initialnationalDebt, double maxTaxBracket, double spendableTaxRevenue) {
   consumerSpending = ConsumerSpending;
   Investment = Investment;
   Exports = Exports;
@@ -27,6 +27,7 @@ public nationState(double ConsumerSpending, double Investment,  double Exports, 
   joy = joy;
   initialInterestPayment = initialInterestPayment;
   initialnationalDebt = initialnationalDebt;
+  spendableTaxRevenue = spendableTaxRevenue;
   listOfBonds.add(new Bonds(initialnationalDebt, initialInterestPayment / initialnationalDebt));
   
 
@@ -244,8 +245,9 @@ joy = calculateJoy(GDPGrowthRate, (taxRevenue - arrayOfThingsINeed[2]) - 1,infla
 GlobalGDPGrowth = GlobalGDPGrowth * GEGM;
 globalGDP = GlobalGDPGrowth * globalGDP;
 year++;
-taxRevenue = taxRevenue - interestPayment();
-taxRevenue = taxRevenue - removeOldBonds();
+spendableTaxRevenue = taxRevenue;
+spendableTaxRevenue = spendableTaxRevenue - interestPayment();
+spendableTaxRevenue = spendableTaxRevenue - removeOldBonds();
 
 
 issueBonds(nationCurrentlyModelled);
