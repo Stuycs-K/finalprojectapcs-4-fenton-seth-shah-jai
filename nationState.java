@@ -176,8 +176,8 @@ oldTotalGovernmentSpending += oldGovernmentBudget[i];
   return arrayToReturn;
 }
 
-public double calculateJoy() {
-  
+public double calculateJoy(double gdpGrowth, double taxChange, double inflationRate, double nationalDebt) {
+  return joy * ((1 + gdpGrowth * 3) - (taxChange + inflationRate + nationalDebt / GDP() / 40);
 }
 
 
@@ -192,6 +192,7 @@ double oldSumOfInvestmentConsumerAndNetExports = arrayOfThingsINeed[1] - oldGove
 double differenceToBeDistributed = newSumOfInvestmentConsumerAndNetExports - oldSumOfInvestmentConsumerAndNetExports;
 consumerSpending = consumerSpending + differenceToBeDistributed * .6;
 Investment = Investment + differenceToBeDistributed * .4;
+joy = calculateJoy(GDPGrowthRate, (taxRevenue - arrayOfThingsINeed[2]) - 1, nationalDebt);
 
 
 
