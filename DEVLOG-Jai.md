@@ -13,5 +13,5 @@ Worked on UML in class, figured out how the Events should work with one another.
 ### 2025-05-27 - Finished Run & most of Events
 Finished all of run, need exceptions for edge cases but mostly good as is, Events should properly process the text file but needs more review, eventsMaker uses an old method and needs fixing.
 
-### 2025-05-27 - Finished Events, merged and compiled
-Managed to finish events, merged classes and figured out how to make everything compile, now need to finish & make sure everything is properly called.
+### 2025-05-28 - Finished Events & Compiled
+Made sure events existed, compiled all files and they work (with exception to tax revenue), now work is needed on actually calling the events and making the nations.
