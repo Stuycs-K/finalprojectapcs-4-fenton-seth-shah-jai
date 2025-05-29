@@ -26,6 +26,9 @@ public nationState(double ConsumerSpending, double Investment,  double Exports, 
   maxTaxBracket = maxTaxBracket;
   joy = joy;
   initialInterestPayment = initialInterestPayment;
+  nationalDebt = nationalDebt;
+  listOfBonds.add(new 
+  
 
 
 
@@ -94,7 +97,7 @@ public double calcInflation(double oldTaxRevenue, double oldInterestRate, double
   return (oldTaxRevenue / taxRevenue) * .3 + (interestRate + 1) / (oldInterestRate + 1) * .3 + (governmentSpending() / oldGovSpending) * .4;
 }
 
-public double setGEGM(double newGEGM) {
+public void setGEGM(double newGEGM) {
   GEGM = newGEGM;
 }
 
@@ -114,7 +117,7 @@ return bondInterestModifier;
     bondInterestModifier = 1.8;
   }
   else {
-    bondInterestModifier = nationalDebt / GDP;
+    bondInterestModifier = nationalDebt / GDP();
   }
   return bondInterestModifier;
 
@@ -177,11 +180,16 @@ oldTotalGovernmentSpending += oldGovernmentBudget[i];
 }
 
 public double calculateJoy(double gdpGrowth, double taxChange, double inflationRate, double nationalDebt) {
-  return joy * ((1 + gdpGrowth * 3) - (taxChange + inflationRate + nationalDebt / GDP() / 40);
+  return joy * ((1 + gdpGrowth * 3) - (taxChange + inflationRate + nationalDebt / GDP() / 40));
+}
+
+public static double issueBonds(nationState newNationState) {
+listOfBonds.add(new Bonds(newNationState));
+
 }
 
 
-public void adjustInstanceVariables(double[] governmentBudget, double newinterestRate, double newMaxBracket) {
+public void adjustInstanceVariables(double[] governmentBudget, double newinterestRate, double newMaxBracket, nationState nationCurrentlyModelled) {
 double[] arrayOfThingsINeed = calculateGDPGrowth(governmentBudget, newInterestRate, newMaxBracket);
 GDPGrowthRate = arrayOfThingsINeed[0];
 taxRevenue = taxRevenue * (1 + GDPGrowthRate);
@@ -193,6 +201,14 @@ double differenceToBeDistributed = newSumOfInvestmentConsumerAndNetExports - old
 consumerSpending = consumerSpending + differenceToBeDistributed * .6;
 Investment = Investment + differenceToBeDistributed * .4;
 joy = calculateJoy(GDPGrowthRate, (taxRevenue - arrayOfThingsINeed[2]) - 1, nationalDebt);
+GlobalGDPGrowth = GlobalGDPGrowth * GEGM;
+globalGDP = GlobalGDPGrowth * globalGDP;
+year++;
+issueBonds(nationCurrentlyModelled);
+double totalInterestPayment = initialInterestPayment;
+
+
+
 
 
 
