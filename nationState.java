@@ -207,8 +207,8 @@ oldTotalGovernmentSpending += oldGovernmentBudget[i];
   return arrayToReturn;
 }
 
-public double calculateJoy(double gdpGrowth, double taxChange, double inflationRate, double nationalDebt) {
-  return joy * ((1 + gdpGrowth * 3) - (taxChange + inflationRate + nationalDebt / GDP() / 40));
+public double calculateJoy(double gdpGrowth, double taxChange, double inflationRate, double nationalDebt, double oldHealthCare, double oldWelfare) {
+  return joy * ((1 + gdpGrowth * 3) - (taxChange + inflationRate + nationalDebt / GDP() / 40) + (oldHealthCare / govBudgetBreakDown[1] - 1) + (oldWelfare / govBudgetBreakDown[2] - 1) ;
 }
 
 public static void issueBonds(nationState newNationState) {
