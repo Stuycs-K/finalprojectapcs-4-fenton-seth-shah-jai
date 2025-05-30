@@ -1,17 +1,12 @@
 import java.util.*;
 import java.io.*;
 public class Events{
-    private static ArrayList<String> events;
-    private static ArrayList<Double> changeRate;
+    private static ArrayList<String> events=new ArrayList<String>();
+    private static ArrayList<Double> changeRate=new ArrayList<Double>();
     private static boolean hasMade=true;
-    public Events{
-        events=new ArrayList<String>();
-        changeRate=new ArrayList<Double>();
-    }
     public static void eventMaker(String filename){
         try{
             Scanner fileScan=new Scanner(new File(filename));
-            int i=0;
             while(fileScan.hasNextLine()){
                 String line=fileScan.nextLine();
                 String[] inputs=line.split(",");
