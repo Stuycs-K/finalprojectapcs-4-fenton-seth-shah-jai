@@ -72,7 +72,7 @@ public class run{
     return false;
   }
   public void GrabConditions(){
-    System.out.println("Tax Rev: "+ nation.getTaxRevenue()+"\nConsumerSpending: "
+    System.out.println("GDP: " + nation.GDP() + "\nTax Rev: "+ nation.getTaxRevenue()+"\nConsumerSpending: "
       +nation.getConsumerSpending()+"\nGDPGrowthRate: "+nation.getGDPGrowthRate()+
       "\nInflation & Debt: "+ nation.getinflationRate()+" & "+nation.nationalDebt()
       +"\nJoy: "+nation.getJoy()+"\nYour Budget: " + Arrays.toString(nation.getGovBudgetBreakDown())
@@ -88,7 +88,7 @@ public class run{
         GrabConditions();
         System.out.println("Your Move.");
         ModifyNations();
-        nation.happened();
+        //nation.happened();
         System.out.println(nation.getJoy());
       }
       System.out.println("L + ratio + you got couped");
