@@ -2,8 +2,7 @@ import java.util.*;
 public class run{
   private double[] userIn;
   private Double taxBrak, interestNum;
-  private nationState nation=new nationState(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0}, 0.0, 0.0, 0.0, 0.0);
-  nationState Germany=new nationState(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0}, 0.0, 0.0, 0.0, 0.0);
+  private nationState nation;
   Scanner read=new Scanner(System.in);
 
 
@@ -68,7 +67,7 @@ public class run{
 */
   }
   public boolean initializeNation(){
-    nation=Germany;
+    nation=new nationState(0.01,2000.0,800.0,500.0,400.0,0.02,0.03,0.015,20.0,83000000,new double[]{100.0, 200.0, 150.0, 250.0, 300.0, 100.0},1500.0,2000.0,0.45,1400.0, 50.0);
     //Use initializeNation to get code when we integrate other stuff in, use userIn for that
     return false;
   }
@@ -82,8 +81,8 @@ public class run{
 
 
   public void run(){
-      GrabUserInput();
       initializeNation();
+      System.out.println(nation.getJoy());
       while(nation.getJoy()>0){
         GrabConditions();
         System.out.println("Your Move.");
