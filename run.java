@@ -75,7 +75,8 @@ public class run{
     System.out.println("Tax Rev: "+ nation.getTaxRevenue()+"\nConsumerSpending: "
       +nation.getConsumerSpending()+"\nGDPGrowthRate: "+nation.getGDPGrowthRate()+
       "\nInflation & Debt: "+ nation.getinflationRate()+" & "+nation.nationalDebt()
-      +"\nJoy: "+nation.getJoy());
+      +"\nJoy: "+nation.getJoy()+"\nYour Budget: " + Arrays.toString(nation.getGovBudgetBreakDown())
+      +"\nMax Tax Bracket: " + nation.getMaxTaxBracket() + "\nInterst Rate: " + nation.getInterestRate());
 
   }
 
@@ -86,9 +87,9 @@ public class run{
       while(nation.getJoy()>0){
         GrabConditions();
         System.out.println("Your Move.");
-        GrabUserInput();
         ModifyNations();
         nation.happened();
+        System.out.println(nation.getJoy());
       }
       System.out.println("L + ratio + you got couped");
   }

@@ -13,23 +13,23 @@ public class nationState {
 private double[] govBudgetBreakDown;
 
 public nationState(double populationGrowthRate,double ConsumerSpending, double Investment,  double Exports, double Imports, double DefaultGDPGrowthRate, double interestRate, double inflationRate,double initialInterestPayment,double population, double[] govBudgetBreakDown, double taxRevenue, double initialnationalDebt, double maxTaxBracket, double spendableTaxRevenue, double joy) {
-  consumerSpending = ConsumerSpending;
-  Investment = Investment;
-  Exports = Exports;
-  Imports = Imports;
-  GDPGrowthRate = DefaultGDPGrowthRate;
-  interestRate = interestRate;
-  inflationRate = inflationRate;
-  govBudgetBreakDown = govBudgetBreakDown;
-  taxRevenue = taxRevenue;
+  this.consumerSpending = ConsumerSpending;
+  this.Investment = Investment;
+  this.Exports = Exports;
+  this.Imports = Imports;
+  this.GDPGrowthRate = DefaultGDPGrowthRate;
+  this.interestRate = interestRate;
+  this.inflationRate = inflationRate;
+  this.govBudgetBreakDown = govBudgetBreakDown;
+  this.taxRevenue = taxRevenue;
   listOfBonds = new ArrayList<Bonds>(0);
-  maxTaxBracket = maxTaxBracket;
-  joy = joy;
-  initialInterestPayment = initialInterestPayment;
-  initialnationalDebt = initialnationalDebt;
-  spendableTaxRevenue = spendableTaxRevenue;
-  population = population;
-  populationGrowthRate = populationGrowthRate;
+  this.maxTaxBracket = maxTaxBracket;
+  this.joy = joy;
+  this.initialInterestPayment = initialInterestPayment;
+  this.initialnationalDebt = initialnationalDebt;
+  this.spendableTaxRevenue = spendableTaxRevenue;
+  this.population = population;
+  this.populationGrowthRate = populationGrowthRate;
   listOfBonds.add(new Bonds(initialnationalDebt, initialInterestPayment / initialnationalDebt));
 
 
@@ -235,6 +235,10 @@ return valueOfOldBondsToRepay;
 
 public double getSpendableTaxRevenue() {
 return spendableTaxRevenue;
+}
+
+public double getMaxTaxBracket(){
+  return maxTaxBracket;
 }
 
 public void adjustPopulationStatistics() {
