@@ -302,7 +302,7 @@ public void happened(){
   Random rand=new Random();
   double happen=rand.nextDouble();
   if(happen<0.3){
-    //Access the  list of events
+    Events.EventHappens(this);
   }
 
   else{

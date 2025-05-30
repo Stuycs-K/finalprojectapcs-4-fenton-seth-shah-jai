@@ -1,32 +1,44 @@
 import java.util.*;
 public class run{
-  private String userIn;
-  private Double budgetNum;
-  private nationState nation;
-  nationState Germany=new nationState(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0}, 0.0, 0.0, 0.0, 0.0);
+  private double[] userIn;
+  private Double taxBrak, interestNum;
+  private nationState nation=new nationState(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0}, 0.0, 0.0, 0.0, 0.0);
+  nationState Germany=new nationState(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0}, 0.0, 0.0, 0.0, 0.0);
+  Scanner read=new Scanner(System.in);
 
 
 
   public void GrabUserInput(){
-    Scanner read=new Scanner(System.in);
-    userIn=read.nextLine();
+    userIn=new double[6];
+    for(int i=0;i<6;i++){
+      userIn[i]=read.nextDouble();
+    }
+    read.nextLine();
   }
   public void GrabUserNum(){
-    Scanner read=new Scanner(System.in);
-    budgetNum=read.nextDouble();
+    interestNum=read.nextDouble();
+    read.nextLine();
+  }
+  public void GrabTaxBrak(){
+    taxBrak=read.nextDouble();
+    read.nextLine();
   }
   public void ModifyNations(){
-    System.out.println("And how much?");
+    System.out.println("Enter your new interest rate");
     GrabUserNum();
-    if(budgetNum.equals(0.0)){
-      System.out.println("Nope, its 1");
-      budgetNum=1.0;
-    }
+    System.out.println("What is your new max Tax Bracket?");
+    GrabTaxBrak();
+    System.out.println("Put in your new budget as a series of 6 values, seperated by Spaces.\nYour catagories are manufacturing, welfare, healthcare, salaries, military, other");
+    GrabUserInput();
+    nation.adjustInstanceVariables(userIn,interestNum,taxBrak, nation);
+//adjustInstanceVariables(double[] governmentBudget, double newinterestRate, double newMaxBracket, nation);
+
+/*
     if(userIn.equals("Taxes")){
       nation.updateTaxRevenue(budgetNum);
     }
     else if(userIn.equals("Interest")){
-      nation.setInterestRate(budgetNum);
+      adjustInstanceVariables(governmentBudget, budgetNum, double newMaxBracket, nation);
     }
     else if(userIn.equals("Budget")){
       System.out.println("Which line item? Manufacturing, Welfare, Healthcare, Salaries, Military, Other?");
@@ -53,7 +65,7 @@ public class run{
       nation.setGovernmentSpending(bud);
 
     }
-
+*/
   }
   public boolean initializeNation(){
     nation=Germany;
@@ -74,9 +86,10 @@ public class run{
       initializeNation();
       while(nation.getJoy()>0){
         GrabConditions();
-        System.out.println("Your Move");
+        System.out.println("Your Move.");
         GrabUserInput();
         ModifyNations();
+        nation.happened();
       }
       System.out.println("L + ratio + you got couped");
   }
