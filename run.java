@@ -2,7 +2,7 @@ import java.util.*;
 public class run{
   private double[] userIn;
   private Double taxBrak, interestNum;
-  private nationState nation;
+  private nationState nation=new nationState(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0}, 0.0, 0.0, 0.0, 0.0);
   nationState Germany=new nationState(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0}, 0.0, 0.0, 0.0, 0.0);
   Scanner read=new Scanner(System.in);
 

@@ -4,7 +4,10 @@ public class Events{
     private static ArrayList<String> events;
     private static ArrayList<Double> changeRate;
     private static boolean hasMade=true;
-
+    public Events{
+        events=new ArrayList<String>();
+        changeRate=new ArrayList<Double>();
+    }
     public static void eventMaker(String filename){
         try{
             Scanner fileScan=new Scanner(new File(filename));
