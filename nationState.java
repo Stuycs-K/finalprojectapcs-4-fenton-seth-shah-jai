@@ -203,13 +203,15 @@ oldTotalGovernmentSpending += oldGovernmentBudget[i];
   govGrowthSum += govGrowthBreakdown[n];
   }
 
-  double[] arrayToReturn =  {populationGrowthRate * (GEGM * (govGrowthSum + ((oldInterestRate /  newinterestRate) - 1) - ((taxRevenue /  oldTaxRevenue) - 1) * (inflationRate / oldInflationRate))), GDP, oldTaxRevenue, oldInterestRate, oldTotalGovernmentSpending};
+  double[] arrayToReturn =  {populationGrowthRate * (GEGM * (govGrowthSum + ((oldInterestRate /  newinterestRate) - 1) - ((taxRevenue /  oldTaxRevenue) - 1) * (inflationRate / oldInflationRate))), GDP, oldTaxRevenue, oldInterestRate, oldTotalGovernmentSpending, oldGovernmentBudget[1], oldGovernmentBudget[2]};
   return arrayToReturn;
 }
 
-public double calculateJoy(double gdpGrowth, double taxChange, double inflationRate, double nationalDebt, double oldHealthCare, double oldWelfare) {
-  return joy * ((1 + gdpGrowth * 3) - (taxChange + inflationRate + nationalDebt / GDP() / 40) + (oldHealthCare / govBudgetBreakDown[1] - 1) + (oldWelfare / govBudgetBreakDown[2] - 1) ;
-}
+
+public double calculateJoy(double gdpGrowth, double taxChange, double inflationRate, double nationalDebt, double oldHealthcare, double oldWelfare) {
+  return joy * ((1 + gdpGrowth * 3) - (taxChange + inflationRate + nationalDebt / GDP() / 40) - ((oldHealthcare / govBudgetBreakDown[1] - 1) + (oldWelfare / govBudgetBreakDown[2] - 1)));
+  }
+
 
 public static void issueBonds(nationState newNationState) {
 newNationState.getListOfBonds().add(new Bonds(newNationState));
@@ -254,7 +256,7 @@ double oldSumOfInvestmentConsumerAndNetExports = arrayOfThingsINeed[1] - arrayOf
 double differenceToBeDistributed = newSumOfInvestmentConsumerAndNetExports - oldSumOfInvestmentConsumerAndNetExports;
 consumerSpending = consumerSpending + differenceToBeDistributed * .6;
 Investment = Investment + differenceToBeDistributed * .4;
-joy = calculateJoy(GDPGrowthRate, (taxRevenue - arrayOfThingsINeed[2]) - 1,inflationRate, nationalDebt());
+joy = calculateJoy(GDPGrowthRate, (taxRevenue - arrayOfThingsINeed[2]) - 1,inflationRate, nationalDebt(),arrayOfThingsINeed[5], arrayOfThingsINeed[6]);
 GlobalGDPGrowth = GlobalGDPGrowth * GEGM;
 globalGDP = GlobalGDPGrowth * globalGDP;
 year++;
