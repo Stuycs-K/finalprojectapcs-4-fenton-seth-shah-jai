@@ -207,9 +207,11 @@ oldTotalGovernmentSpending += oldGovernmentBudget[i];
   return arrayToReturn;
 }
 
+
 public double calculateJoy(double gdpGrowth, double taxChange, double inflationRate, double nationalDebt, double oldHealthcare, double oldWelfare) {
   return joy * ((1 + gdpGrowth * 3) - (taxChange + inflationRate + nationalDebt / GDP() / 40) - ((oldHealthcare / govBudgetBreakDown[1] - 1) + (oldWelfare / govBudgetBreakDown[2] - 1)));
   }
+
 
 public static void issueBonds(nationState newNationState) {
 newNationState.getListOfBonds().add(new Bonds(newNationState));
