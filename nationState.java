@@ -11,6 +11,7 @@ public class nationState {
 //government budget breaks down into six core sectors, manufacturing (standin for most subsidies), non healthcare welfare, healthcare, salaries (standin for most pensions and labor expenditures), millitary, anythingElse
 //means every array will range from index 0 to index 6
 private double[] govBudgetBreakDown;
+//change
 
 public nationState(double populationGrowthRate,double ConsumerSpending, double Investment,  double Exports, double Imports, double DefaultGDPGrowthRate, double interestRate, double inflationRate,double initialInterestPayment,double population, double[] govBudgetBreakDown, double taxRevenue, double initialnationalDebt, double maxTaxBracket, double spendableTaxRevenue, double joy) {
   this.consumerSpending = ConsumerSpending;
