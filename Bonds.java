@@ -8,9 +8,10 @@ public class Bonds {
   }
   
   public Bonds(double valueOfBonds, double interestRate) {
-    interestRate = interestRate;
+
+    this.interestRate = interestRate;
     maturationTimeline = 20;
-    valueOfBonds = valueOfBonds;
+    this.valueOfBonds = valueOfBonds;
   }
   
   public double getValue() {
