@@ -13,23 +13,23 @@ public class nationState {
 private double[] govBudgetBreakDown;
 
 public nationState(double populationGrowthRate,double ConsumerSpending, double Investment,  double Exports, double Imports, double DefaultGDPGrowthRate, double interestRate, double inflationRate,double initialInterestPayment,double population, double[] govBudgetBreakDown, double taxRevenue, double initialnationalDebt, double maxTaxBracket, double spendableTaxRevenue, double joy) {
-  consumerSpending = ConsumerSpending;
-  Investment = Investment;
-  Exports = Exports;
-  Imports = Imports;
-  GDPGrowthRate = DefaultGDPGrowthRate;
-  interestRate = interestRate;
-  inflationRate = inflationRate;
-  govBudgetBreakDown = govBudgetBreakDown;
-  taxRevenue = taxRevenue;
+  this.consumerSpending = ConsumerSpending;
+  this.Investment = Investment;
+  this.Exports = Exports;
+  this.Imports = Imports;
+  this.GDPGrowthRate = DefaultGDPGrowthRate;
+  this.interestRate = interestRate;
+  this.inflationRate = inflationRate;
+  this.govBudgetBreakDown = govBudgetBreakDown;
+  this.taxRevenue = taxRevenue;
   listOfBonds = new ArrayList<Bonds>(0);
-  maxTaxBracket = maxTaxBracket;
-  joy = joy;
-  initialInterestPayment = initialInterestPayment;
-  initialnationalDebt = initialnationalDebt;
-  spendableTaxRevenue = spendableTaxRevenue;
-  population = population;
-  populationGrowthRate = populationGrowthRate;
+  this.maxTaxBracket = maxTaxBracket;
+  this.joy = joy;
+  this.initialInterestPayment = initialInterestPayment;
+  this.initialnationalDebt = initialnationalDebt;
+  this.spendableTaxRevenue = spendableTaxRevenue;
+  this.population = population;
+  this.populationGrowthRate = populationGrowthRate;
   listOfBonds.add(new Bonds(initialnationalDebt, initialInterestPayment / initialnationalDebt));
 
 
@@ -209,7 +209,15 @@ oldTotalGovernmentSpending += oldGovernmentBudget[i];
 
 
 public double calculateJoy(double gdpGrowth, double taxChange, double inflationRate, double nationalDebt, double oldHealthcare, double oldWelfare) {
+  if (oldHealthcare / govBudgetBreakDown[1] - 1 != 0 && (oldWelfare / govBudgetBreakDown[2] - 1) != 0) {
   return joy * ((1 + gdpGrowth * 3) - (taxChange + inflationRate + nationalDebt / GDP() / 40) - ((oldHealthcare / govBudgetBreakDown[1] - 1) + (oldWelfare / govBudgetBreakDown[2] - 1)));
+}
+else if ((oldWelfare / govBudgetBreakDown[2] - 1) != 0) {
+  return joy * ((1 + gdpGrowth * 3) - (taxChange + inflationRate + nationalDebt / GDP() / 40) - (oldWelfare / govBudgetBreakDown[2] - 1));
+
+}
+return joy * ((1 + gdpGrowth * 3) - (taxChange + inflationRate + nationalDebt  /  GDP() / 40));
+
   }
 
 
@@ -237,6 +245,10 @@ public double getSpendableTaxRevenue() {
 return spendableTaxRevenue;
 }
 
+public double getMaxTaxBracket(){
+  return maxTaxBracket;
+}
+
 public void adjustPopulationStatistics() {
   populationGrowthRate = populationGrowthRate * (GDPGrowthRate + 1 - inflationRate);
   population = population * populationGrowthRate;
@@ -249,14 +261,14 @@ adjustPopulationStatistics();
 double[] arrayOfThingsINeed = calculateGDPGrowth(governmentBudget, newinterestRate, newMaxBracket);
 GDPGrowthRate = arrayOfThingsINeed[0];
 taxRevenue = taxRevenue * (1 + GDPGrowthRate);
-double newGDP = arrayOfThingsINeed[1] * GDPGrowthRate;
+double newGDP = arrayOfThingsINeed[1] * (1 + GDPGrowthRate);
 //net Exports isn't included because it remains constant while this is only a domestic economic simulator, will figure out the implications of Net Exports in later reworks after minimum viable product is achieved
 double newSumOfInvestmentConsumerAndNetExports = newGDP - governmentSpending();
 double oldSumOfInvestmentConsumerAndNetExports = arrayOfThingsINeed[1] - arrayOfThingsINeed[4];
 double differenceToBeDistributed = newSumOfInvestmentConsumerAndNetExports - oldSumOfInvestmentConsumerAndNetExports;
 consumerSpending = consumerSpending + differenceToBeDistributed * .6;
 Investment = Investment + differenceToBeDistributed * .4;
-joy = calculateJoy(GDPGrowthRate, (taxRevenue - arrayOfThingsINeed[2]) - 1,inflationRate, nationalDebt(),arrayOfThingsINeed[5], arrayOfThingsINeed[6]);
+joy = calculateJoy(GDPGrowthRate, (taxRevenue / arrayOfThingsINeed[2]) - 1,inflationRate, nationalDebt(),arrayOfThingsINeed[5], arrayOfThingsINeed[6]);
 GlobalGDPGrowth = GlobalGDPGrowth * GEGM;
 globalGDP = GlobalGDPGrowth * globalGDP;
 year++;
