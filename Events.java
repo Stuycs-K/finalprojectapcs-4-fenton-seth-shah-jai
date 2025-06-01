@@ -10,7 +10,8 @@ public class Events{
             while(fileScan.hasNextLine()){
                 String line=fileScan.nextLine();
                 String[] inputs=line.split(",");
-                Event(inputs[0],Double.parseDouble(inputs[1]));
+                int sign=Integer.parseInt(inputs[2]);
+                Event(inputs[0],sign*Double.parseDouble(inputs[1]));
             }
         }catch(FileNotFoundException skill){
             System.out.println("File not found. try again");

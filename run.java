@@ -89,7 +89,7 @@ public class run{
         GrabConditions();
         System.out.println("Your Move.");
         ModifyNations();
-        //nation.happened();
+        nation.happened();
        // System.out.println(nation.getJoy());
       }
       System.out.println("L + ratio + you got couped");
