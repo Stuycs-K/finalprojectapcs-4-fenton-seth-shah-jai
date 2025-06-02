@@ -1,25 +1,25 @@
 import java.util.*;
 public class run{
-  private double[] userIn;
-  private Double taxBrak, interestNum;
+  private float[] userIn;
+  private float taxBrak, interestNum;
   private nationState nation;
   Scanner read=new Scanner(System.in);
 
 
 
   public void GrabUserInput(){
-    userIn=new double[6];
+    userIn=new float[6];
     for(int i=0;i<6;i++){
-      userIn[i]=read.nextDouble();
+      userIn[i]=read.nextfloat();
     }
     read.nextLine();
   }
   public void GrabUserNum(){
-    interestNum=read.nextDouble();
+    interestNum=read.nextfloat();
     read.nextLine();
   }
   public void GrabTaxBrak(){
-    taxBrak=read.nextDouble();
+    taxBrak=read.nextfloat();
     read.nextLine();
   }
   public void ModifyNations(){
@@ -30,19 +30,19 @@ public class run{
     System.out.println("Put in your new budget as a series of 6 values, seperated by Spaces.\nYour catagories are manufacturing, welfare, healthcare, salaries, military, other");
     GrabUserInput();
     nation.adjustInstanceVariables(userIn,interestNum,taxBrak, nation);
-//adjustInstanceVariables(double[] governmentBudget, double newinterestRate, double newMaxBracket, nation);
+//adjustInstanceVariables(float[] governmentBudget, float newinterestRate, float newMaxBracket, nation);
 
 /*
     if(userIn.equals("Taxes")){
       nation.updateTaxRevenue(budgetNum);
     }
     else if(userIn.equals("Interest")){
-      adjustInstanceVariables(governmentBudget, budgetNum, double newMaxBracket, nation);
+      adjustInstanceVariables(governmentBudget, budgetNum, float newMaxBracket, nation);
     }
     else if(userIn.equals("Budget")){
       System.out.println("Which line item? Manufacturing, Welfare, Healthcare, Salaries, Military, Other?");
       GrabUserInput();
-      double[] bud=nation.getGovBudgetBreakDown();
+      float[] bud=nation.getGovBudgetBreakDown();
       if(userIn.equals("Manufacturing")){
         bud[0]+=budgetNum;
       }
@@ -67,8 +67,8 @@ public class run{
 */
   }
   public boolean initializeNation(){
-  //double populationGrowthRate,double ConsumerSpending, double Investment,  double Exports, double Imports, double DefaultGDPGrowthRate, double interestRate, double inflationRate,double initialInterestPayment,double population, double[] govBudgetBreakDown, double taxRevenue, double initialnationalDebt, double maxTaxBracket, double spendableTaxRevenue, double joy
-    nation=new nationState(0.01,2000.0,800.0,500.0,400.0,0.02,0.03,0.015,20.0,83000000,new double[]{100.0, 200.0, 150.0, 250.0, 300.0, 100.0},915.9,2000.0,0.45,1400.0, 50.0);
+  //float populationGrowthRate,float ConsumerSpending, float Investment,  float Exports, float Imports, float DefaultGDPGrowthRate, float interestRate, float inflationRate,float initialInterestPayment,float population, float[] govBudgetBreakDown, float taxRevenue, float initialnationalDebt, float maxTaxBracket, float spendableTaxRevenue, float joy
+    nation=new nationState(0.01,2000.0,800.0,500.0,400.0,0.02,0.03,0.015,20.0,83000000,new float[]{100.0, 200.0, 150.0, 250.0, 300.0, 100.0},915.9,2000.0,0.45,1400.0, 50.0);
     //Use initializeNation to get code when we integrate other stuff in, use userIn for that
     return false;
   }
