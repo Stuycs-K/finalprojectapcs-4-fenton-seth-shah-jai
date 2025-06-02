@@ -63,6 +63,11 @@ return nationalDebt;
 
 }
 
+
+public double getYear() {
+return year;
+}
+
 public double interestPayment() {
 double interestPayments = 0;
 for (int i = 0; i < listOfBonds.size(); i++) {
@@ -208,20 +213,20 @@ oldTotalGovernmentSpending += oldGovernmentBudget[i];
   govGrowthSum += govGrowthBreakdown[n];
   }
 
-  double[] arrayToReturn =  {DefaultGDPGrowthRate * (((1 + populationGrowthRate) * (GEGM * (govGrowthSum + ((oldInterestRate /  newinterestRate) - 1) - (((taxRevenue /  oldTaxRevenue)  - 1) * 1.5) * (inflationRate / oldInflationRate)))) + 1), GDP, oldTaxRevenue, oldInterestRate, oldTotalGovernmentSpending, oldGovernmentBudget[1], oldGovernmentBudget[2], oldTaxBracket};
+  double[] arrayToReturn =  {(DefaultGDPGrowthRate * ((1 + populationGrowthRate) * (GEGM * (govGrowthSum * 10 + ((oldInterestRate /  newinterestRate) - 1) * 10 - (((maxTaxBracket /  oldTaxBracket)  - 1) * 10) * (inflationRate / oldInflationRate))) + 1) * .7), GDP, oldTaxRevenue, oldInterestRate, oldTotalGovernmentSpending, oldGovernmentBudget[1], oldGovernmentBudget[2], oldTaxBracket};
   return arrayToReturn;
 }
 
 
 public double calculateJoy(double gdpGrowth, double taxChange, double inflationRate, double nationalDebt, double oldHealthcare, double oldWelfare) {
   if (oldHealthcare / govBudgetBreakDown[1] - 1 != 0 && (oldWelfare / govBudgetBreakDown[2] - 1) != 0) {
-  return joy * ((1 + gdpGrowth * 3) - (taxChange + inflationRate + nationalDebt / GDP()  * 6) - ((oldHealthcare / govBudgetBreakDown[1] - 1) + (oldWelfare / govBudgetBreakDown[2] - 1)));
+  return joy * ((1 + gdpGrowth * 3) - (taxChange + inflationRate + nationalDebt / GDP()) - ((oldHealthcare / govBudgetBreakDown[1] - 1) + (oldWelfare / govBudgetBreakDown[2] - 1)));
 }
 else if ((oldWelfare / govBudgetBreakDown[2] - 1) != 0) {
-  return joy * ((1 + gdpGrowth * 3) - (taxChange + inflationRate + nationalDebt / GDP()  * 6) - (oldWelfare / govBudgetBreakDown[2] - 1));
+  return joy * ((1 + gdpGrowth * 3) - (taxChange + inflationRate + nationalDebt / GDP()) - (oldWelfare / govBudgetBreakDown[2] - 1));
 
 }
-return joy * ((1 + gdpGrowth * 3) - (taxChange + inflationRate + nationalDebt /  GDP()  * 6));
+return joy * ((1 + gdpGrowth * 3) - (taxChange + inflationRate + nationalDebt /  GDP()));
 
   }
 
