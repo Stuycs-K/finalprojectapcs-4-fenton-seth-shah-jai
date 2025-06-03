@@ -75,9 +75,9 @@ public class run{
   public void GrabConditions(){
     System.out.println("GDP: " + nation.GDP() + "\nReal GDP: " + nation.RealGDP() +  "\nTax Rev: "+ nation.getTaxRevenue()+"\nConsumerSpending: "
       +nation.getConsumerSpending()+"\nGDPGrowthRate: "+nation.getGDPGrowthRate()+
-      "\nInflation & Debt: "+ nation.getinflationRate()+"\nNational Debt: " +nation.nationalDebt()
+      "\nInflation: "+ nation.getinflationRate()+"\nNational Debt: " +nation.nationalDebt()
       +"\nJoy: "+nation.getJoy()+"\nYour Budget: " + Arrays.toString(nation.getGovBudgetBreakDown())
-      +"\nMax Tax Bracket: " + nation.getMaxTaxBracket() + "\nInterest Rate: " + nation.getInterestRate() + "\nDeficit:" + nation.findBudgetBalence() + "\nInterest Payment:" + nation.interestPayment());
+      +"\nMax Tax Bracket: " + nation.getMaxTaxBracket() + "\nInterest Rate: " + nation.getInterestRate() + "\nDeficit:" + nation.findBudgetBalence() + "\nInterest Payment:" + nation.interestPayment() + "\nYear: " + nation.getYear());
 
   }
 
@@ -85,12 +85,12 @@ public class run{
   public void run(){
       initializeNation();
       //System.out.println(nation.getJoy());
-      while(nation.getJoy()>0){
+      while(nation.getJoy()>20){
         GrabConditions();
         System.out.println("Your Move.");
         ModifyNations();
         nation.happened();
-       // System.out.println(nation.getJoy());
+       //System.out.println(nation.getJoy());
       }
       System.out.println("L + ratio + you got couped");
   }
