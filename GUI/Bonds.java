@@ -1,5 +1,5 @@
 public class Bonds {
-  private float valueOfBonds, interestRate, maturationTimeline;
+  private double valueOfBonds, interestRate, maturationTimeline;
 
   public Bonds(nationState nation) {
     interestRate = nation.getInterestRate() * nation.bondInterestModifier();
@@ -7,22 +7,22 @@ public class Bonds {
     valueOfBonds = nation.getSpending() - nation.getSpendableTaxRevenue();
   }
   
-  public Bonds(float valueOfBonds, float interestRate) {
+  public Bonds(double valueOfBonds, double interestRate) {
 
     this.interestRate = interestRate;
     maturationTimeline = 20;
     this.valueOfBonds = valueOfBonds;
   }
   
-  public float getValue() {
+  public double getValue() {
 return valueOfBonds;
 }
 
-  public float getInterestRate() {
+  public double getInterestRate() {
 return interestRate;
 }
 
-public float getMaturationTimeline() {
+public double getMaturationTimeline() {
 return maturationTimeline;
 }
 
