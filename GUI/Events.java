@@ -4,6 +4,8 @@ public class Events{
     private static ArrayList<String> events=new ArrayList<String>();
     private static ArrayList<Double> changeRate=new ArrayList<Double>();
     private static boolean hasMade=true;
+    private static String current="Whatever man";
+    
     public static void eventMaker(String filename){
         try{
             Scanner fileScan=new Scanner(new File(filename));
@@ -43,7 +45,12 @@ public class Events{
         }
         Random rand=new Random();
         int happening=rand.nextInt(events.size());
+        current=events.get(happening);
         System.out.println(events.get(happening));
         nation.setGEGM(changeRate.get(happening)*nation.getGEGM());
     }
+    public static String getCurrent(){
+      return current;
+    } 
+     
 }
