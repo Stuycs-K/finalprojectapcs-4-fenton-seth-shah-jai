@@ -102,6 +102,9 @@ public class run{
     run newSim=new run();
     newSim.run();
   }
+  public void nationRet(){
+    return nation;
+  }
     //Take the function for calculateGDPgrowth and use use userinputs
     //Add handling for bad inputs
 }
