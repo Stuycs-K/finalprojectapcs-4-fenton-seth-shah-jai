@@ -85,6 +85,14 @@ public class run{
 
   }
 
+  public String ProcessCondition(){
+    return ("GDP: " + nation.GDP() + "\nReal GDP: " + nation.RealGDP() +  "\nTax Rev: "+ nation.getTaxRevenue()+"\nConsumerSpending: "
+      +nation.getConsumerSpending()+"\nGDPGrowthRate: "+nation.getGDPGrowthRate()+
+      "\nInflation & Debt: "+ nation.getinflationRate()+"\nNational Debt: " +nation.nationalDebt()
+      +"\nJoy: "+nation.getJoy()+"\nYour Budget: " + Arrays.toString(nation.getGovBudgetBreakDown())
+      +"\nMax Tax Bracket: " + nation.getMaxTaxBracket() + "\nInterest Rate: " + nation.getInterestRate() + "\nDeficit:" + nation.findBudgetBalence() + "\nInterest Payment:" + nation.interestPayment());
+
+  }
 
   public void run(){
       initializeNation();

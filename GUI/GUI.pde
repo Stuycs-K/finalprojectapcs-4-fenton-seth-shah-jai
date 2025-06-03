@@ -7,6 +7,10 @@ float interestRate;
 float taxBracket;
 int background=color(255,255,255);
 
+void draw(){
+  text(run.ProcessCondition(), 300, 200);
+}
+
 void setup(){
   size(1200,800);
   cp5=new ControlP5(this);
@@ -81,7 +85,7 @@ void setup(){
 void NextTurn(){
     NAT.turn();
     eventNew.setText("Guys, "+Events.getCurrent()).show();
-    delay(1000);
+    delay(4000);
     eventNew.hide();
     
 }
