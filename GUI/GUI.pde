@@ -8,11 +8,11 @@ float taxBracket;
 int background=color(255,255,255);
 
 void setup(){
-  size(800,400);
+  size(1200,800);
   cp5=new ControlP5(this);
   cp5.addButton("NextTurn")
-    .setPosition(50,50)
-    .setSize(100,100)
+    .setPosition(700,400)
+    .setSize(300,300)
     .setLabel("Turn End");
   eventNew=cp5.addTextlabel("EventNew")
     .setText("Awaiting something")
@@ -20,23 +20,54 @@ void setup(){
     .hide();
   cp5.addNumberbox("MaxTaxBracket")
     //.setPosition()
-    .setSize(80,20)
+    .setSize(200,60)
     .setRange(0.0,1.0)
     //.setValue();
     .setLabel("Max Tax Bracket");
   cp5.addNumberbox("InterestRate")
     //.setPosition()
-    .setSize(80,20)
+    .setSize(200,60)
     .setRange(0.0,1.0)
     //.setValue();
     .setLabel("Interest Rate");
   cp5.addNumberbox("MAN")
     //.setPosition()
-    .setSize(80,20)
+    .setSize(200,60)
     //.setRange()
     //.setValue();
     .setLabel("Manufacturing");
-  //Do this for all of them
+  cp5.addNumberbox("WEL")
+    //.setPosition()
+    .setSize(200,60)
+    //.setRange()
+    //.setValue();
+    .setLabel("Welfare");
+  cp5.addNumberbox("HEL")
+    //.setPosition()
+    .setSize(200,60)
+    //.setRange()
+    //.setValue();
+    .setLabel("Healthcare");
+  cp5.addNumberbox("SAL")
+    //.setPosition()
+    .setSize(200,60)
+    //.setRange()
+    //.setValue();
+    .setLabel("Saleries");  
+  cp5.addNumberbox("MIL")
+    //.setPosition()
+    .setSize(200,60)
+    //.setRange()
+    //.setValue();
+    .setLabel("Military");
+  cp5.addNumberbox("OTH")
+    //.setPosition()
+    .setSize(200,60)
+    //.setRange()
+    //.setValue();
+    .setLabel("Other");
+    
+    //Do this for all of them
 
   
     
