@@ -72,6 +72,9 @@ public nationState getNation() {
     }
 */
   }
+  public static double roundtoNearestHundredth(double n) {
+    return Math.round(n * 100.0) / 100.0;
+  }
   public void turn(double[] userIn, double interestNum, double taxBrak){
     nation.adjustInstanceVariables(userIn,interestNum,taxBrak, nation);
   }
@@ -83,20 +86,20 @@ public nationState getNation() {
     return false;
   }
   public void GrabConditions(){
-    System.out.println("GDP: " + nation.GDP() + "\nReal GDP: " + nation.RealGDP() +  "\nTax Rev: "+ nation.getTaxRevenue()+"\nConsumerSpending: "
-      +nation.getConsumerSpending()+"\nGDP Growth Rate: "+nation.getGDPGrowthRate()+ "\nReal GDP Growth Rate" + nation.getRealGDPGrowthRate() + 
-      "\nInflation: "+ nation.getinflationRate()+"\nNational Debt: " +nation.nationalDebt()
-      +"\nJoy: "+nation.getJoy()+"\nYour Budget: " + Arrays.toString(nation.getGovBudgetBreakDown())
-      +"\nMax Tax Bracket: " + nation.getMaxTaxBracket() + "\nInterest Rate: " + nation.getInterestRate() + "\nDeficit:" + nation.findBudgetBalence() + "\nInterest Payment:" + nation.interestPayment() + "\nYear: " + nation.getYear());
+    System.out.println("GDP: " + roundtoNearestHundredth(nation.GDP()) + "\nReal GDP: " + roundtoNearestHundredth(nation.RealGDP()) +  "\nTax Rev: "+ roundtoNearestHundredth(nation.getTaxRevenue()) +"\nConsumerSpending: "
+      +roundtoNearestHundredth(nation.getConsumerSpending())+"\nGDP Growth Rate: "+roundtoNearestHundredth(nation.getGDPGrowthRate())+ "\nReal GDP Growth Rate" + roundtoNearestHundredth(nation.getRealGDPGrowthRate()) + 
+      "\nInflation: "+ roundtoNearestHundredth(nation.getinflationRate()) +"\nNational Debt: " +roundtoNearestHundredth(nation.nationalDebt())
+      +"\nJoy: "+roundtoNearestHundredth(nation.getJoy())+"\nYour Budget: " + Arrays.toString(nation.getGovBudgetBreakDown())
+      +"\nMax Tax Bracket: " + roundtoNearestHundredth(nation.getMaxTaxBracket()) + "\nInterest Rate: " + roundtoNearestHundredth(nation.getInterestRate()) + "\nDeficit:" + roundtoNearestHundredth(nation.findBudgetBalence()) + "\nInterest Payment:" + roundtoNearestHundredth(nation.interestPayment()) + "\nYear: " + nation.getYear());
 
   }
 
   public String ProcessCondition(){
-    return ("GDP: " + nation.GDP() + "\nReal GDP: " + nation.RealGDP() +  "\nTax Rev: "+ nation.getTaxRevenue()+"\nConsumerSpending: "
-      +nation.getConsumerSpending()+"\nGDP Growth Rate: "+nation.getGDPGrowthRate()+ "\nReal GDP Growth Rate" + nation.getRealGDPGrowthRate() + 
-      "\nInflation: "+ nation.getinflationRate()+"\nNational Debt: " +nation.nationalDebt()
-      +"\nJoy: "+nation.getJoy()+"\nYour Budget: " + Arrays.toString(nation.getGovBudgetBreakDown())
-      +"\nMax Tax Bracket: " + nation.getMaxTaxBracket() + "\nInterest Rate: " + nation.getInterestRate() + "\nDeficit:" + nation.findBudgetBalence() + "\nInterest Payment:" + nation.interestPayment() + "\nYear: " + nation.getYear());
+    return ("GDP: " + roundtoNearestHundredth(nation.GDP()) + "\nReal GDP: " + roundtoNearestHundredth(nation.RealGDP()) +  "\nTax Rev: "+ roundtoNearestHundredth(nation.getTaxRevenue()) +"\nConsumerSpending: "
+      +roundtoNearestHundredth(nation.getConsumerSpending())+"\nGDP Growth Rate: "+roundtoNearestHundredth(nation.getGDPGrowthRate())+ "\nReal GDP Growth Rate" + roundtoNearestHundredth(nation.getRealGDPGrowthRate()) + 
+      "\nInflation: "+ roundtoNearestHundredth(nation.getinflationRate()) +"\nNational Debt: " +roundtoNearestHundredth(nation.nationalDebt())
+      +"\nJoy: "+roundtoNearestHundredth(nation.getJoy())+"\nYour Budget: " + Arrays.toString(nation.getGovBudgetBreakDown())
+      +"\nMax Tax Bracket: " + roundtoNearestHundredth(nation.getMaxTaxBracket()) + "\nInterest Rate: " + roundtoNearestHundredth(nation.getInterestRate()) + "\nDeficit:" + roundtoNearestHundredth(nation.findBudgetBalence()) + "\nInterest Payment:" + roundtoNearestHundredth(nation.interestPayment()) + "\nYear: " + nation.getYear());
 
   }
 
