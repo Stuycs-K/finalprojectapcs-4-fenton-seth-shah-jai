@@ -10,7 +10,8 @@ int background=color(255,255,255);
 
 void draw(){
   background(background);
-  text(NAT.ProcessCondition(), 300, 200);
+  fill(100);
+  text(NAT.ProcessCondition(), 0, 120);
 }
 
 void setup(){
@@ -19,23 +20,23 @@ void setup(){
     NAT=new run();
   NAT.initializeNation();
   cp5.addButton("NextTurn")
-    .setPosition(300,300)
-    .setSize(50,50)
+    .setPosition(500,200)
+    .setSize(100,100)
     .setLabel("Turn End");
   eventNew=cp5.addTextlabel("EventNew")
     .setText("Awaiting something")
     .setPosition(300,300)
     .hide();
   cp5.addNumberbox("MaxTaxBracket")
-    .setPosition(0,0)
-    .setSize(70,30)
-    .setRange(0.0,100)
+    .setPosition(0,30)
+    .setSize(70,60)
+    .setRange(0.0,1.0)
     .setValue((float) NAT.getNation().getMaxTaxBracket())
     .setLabel("Max Tax Bracket");
   cp5.addNumberbox("InterestRate") 
-    .setPosition(70,0)
-    .setSize(70,30)
-    .setRange(0.0,2.0 * (float) Math.pow(10,10))
+    .setPosition(70,30)
+    .setSize(70,60)
+    .setRange(0.0, 3)
     .setValue((float) NAT.getNation().getInterestRate())
     .setLabel("Interest Rate")
   ;
