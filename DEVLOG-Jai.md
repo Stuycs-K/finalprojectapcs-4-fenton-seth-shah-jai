@@ -21,3 +21,9 @@ All code for the minimum viable product is done, having issues with joy autoset 
 
 ### 2025-06-01 - Edited events, MVP is done
 Readded events to work properly, all work for the MVP is finished
+
+### 2025-06-02 - Figured out Control P5
+Worked on the Control P5 GUI for this project, figuring it out
+
+### 2025-06-03 - Made parts of GUI Display
+Events still broken, but the button and textBoxes do function
