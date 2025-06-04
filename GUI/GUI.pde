@@ -10,7 +10,7 @@ int background=color(255,255,255);
 
 void draw(){
   background(background);
-  text(run.ProcessCondition(), 300, 200);
+  text(NAT.ProcessCondition(), 300, 200);
 }
 
 void setup(){
@@ -25,49 +25,49 @@ void setup(){
     .setPosition(300,300)
     .hide();
   cp5.addNumberbox("MaxTaxBracket")
-    .setPosition(0,0)
+    .setPosition(0,30)
     .setSize(70,60)
     .setRange(0.0,1.0)
     //.setValue();
     .setLabel("Max Tax Bracket");
   cp5.addNumberbox("InterestRate")
-    .setPosition(70,0)
+    .setPosition(70,30)
     .setSize(70,60)
     .setRange(0.0,1.0)
     //.setValue();
     .setLabel("Interest Rate");
   cp5.addNumberbox("MAN")
-    .setPosition(140,0)
+    .setPosition(140,30)
     .setSize(70,60)
     //.setRange()
     //.setValue();
     .setLabel("Manufacturing");
   cp5.addNumberbox("WEL")
-    .setPosition(210,0)
+    .setPosition(210,30)
     .setSize(70,60)
     //.setRange()
     //.setValue();
     .setLabel("Welfare");
   cp5.addNumberbox("HEL")
-    .setPosition(280,0)
+    .setPosition(280,30)
     .setSize(70,60)
     //.setRange()
     //.setValue();
     .setLabel("Healthcare");
   cp5.addNumberbox("SAL")
-    .setPosition(350,0)
+    .setPosition(350,30)
     .setSize(70,60)
     //.setRange()
     //.setValue();
     .setLabel("Saleries");  
   cp5.addNumberbox("MIL")
-    .setPosition(420,0)
+    .setPosition(420,30)
     .setSize(70,60)
     //.setRange()
     //.setValue();
     .setLabel("Military");
   cp5.addNumberbox("OTH")
-    .setPosition(490,0)
+    .setPosition(490,30)
     .setSize(70,60)
     //.setRange()
     //.setValue();
@@ -78,6 +78,8 @@ void setup(){
   
     
   NAT=new run();
+  NAT.initializeNation();
+
   //I need nothing ever happens as an image
   //radio button as my event. Super events?
   //
