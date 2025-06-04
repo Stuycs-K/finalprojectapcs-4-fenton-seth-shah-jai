@@ -156,6 +156,10 @@ return bondInterestModifier;
 
 }
 
+public double getRealGDPGrowthRate() {
+ return GDPGrowthRate / (1 + inflationRate); 
+}
+
 public double setInflationRate(double newInflationRate) {
  double oldInflationRate = inflationRate;
  inflationRate = newInflationRate;
@@ -286,7 +290,7 @@ double oldSumOfInvestmentConsumerAndNetExports = arrayOfThingsINeed[1] - arrayOf
 double differenceToBeDistributed = newSumOfInvestmentConsumerAndNetExports - oldSumOfInvestmentConsumerAndNetExports;
 consumerSpending = consumerSpending + differenceToBeDistributed * .6;
 Investment = Investment + differenceToBeDistributed * .4;
-joy = calculateJoy(GDPGrowthRate, (maxTaxBracket / arrayOfThingsINeed[6]) - 1,inflationRate, nationalDebt(),arrayOfThingsINeed[5], arrayOfThingsINeed[6]);
+joy = calculateJoy(GDPGrowthRate, (maxTaxBracket / arrayOfThingsINeed[6]) - 1,inflationRate, nationalDebt(),arrayOfThingsINeed[5], arrayOfThingsINeed[6]) / 1.5;
 
 
 GlobalGDPGrowth = GlobalGDPGrowth * GEGM;
@@ -343,5 +347,3 @@ public void happened(){
 }
 
 }
-
-
