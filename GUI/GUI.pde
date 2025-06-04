@@ -10,7 +10,8 @@ int background=color(255,255,255);
 
 void draw(){
   background(background);
-  text(NAT.ProcessCondition(), 300, 200);
+  fill(100);
+  text(NAT.ProcessCondition(), 0, 120);
 }
 
 void setup(){
@@ -19,8 +20,8 @@ void setup(){
     NAT=new run();
   NAT.initializeNation();
   cp5.addButton("NextTurn")
-    .setPosition(300,300)
-    .setSize(50,50)
+    .setPosition(500,200)
+    .setSize(100,100)
     .setLabel("Turn End");
   eventNew=cp5.addTextlabel("EventNew")
     .setText("Awaiting something")
