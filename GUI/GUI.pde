@@ -52,7 +52,7 @@ void setup(){
   cp5.addNumberbox("SAL")
     //.setPosition()
     .setSize(200,60)
-    //.setRange()
+    .setRange(0.0, 2.0 * (float) Math.pow(10,60))
     //.setValue();
     .setLabel("Salaries");  
   cp5.addNumberbox("MIL")
