@@ -19,6 +19,7 @@ void setup(){
   cp5=new ControlP5(this);
     NAT=new run();
   NAT.initializeNation();
+  
   cp5.addButton("NextTurn")
     .setPosition(500,200)
     .setSize(100,100)
@@ -102,8 +103,9 @@ void NextTurn(){
     newBudget[4]=(double)cp5.get(Numberbox.class,"MIL").getValue();
     newBudget[5]=(double)cp5.get(Numberbox.class,"OTH").getValue();
     NAT.turn(newBudget,(double)cp5.get(Numberbox.class,"InterestRate").getValue(),(double)cp5.get(Numberbox.class,"MaxTaxBracket").getValue());
+    //Events.EventHappens(NAT.getNation());
     eventNew.setText("Guys, "+Events.getCurrent()).show();
-    delay(4000);
+    delay(2000);
     eventNew.hide();
     
 }
