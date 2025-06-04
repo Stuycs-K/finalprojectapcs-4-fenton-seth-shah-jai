@@ -6,7 +6,7 @@ Textlabel eventNew;
 float interestRate;
 float taxBracket;
 double[] newBudget=new double[6];
-int background=color(255,255,255);
+int background=color(140,140,140);
 
 void draw(){
   background(background);
