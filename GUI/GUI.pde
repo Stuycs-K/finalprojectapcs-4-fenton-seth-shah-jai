@@ -9,13 +9,22 @@ double[] newBudget=new double[6];
 int background=color(140,140,140);
 
 void draw(){
-  background(background);
-  fill(100);
+      fill(255, 0, 255);
+  rect(0, 100, 300, 225);
+  fill(0);
   text(NAT.ProcessCondition(), 0, 120);
 }
 
 void setup(){
-  size(700,500);
+
+  PImage image = loadImage("istockphoto-175600020-612x612.jpg");
+
+  background(image);
+    size(612,407);
+      fill(255, 0, 255);
+    rect(0,20, 550, 30);
+    fill(0);
+
   cp5=new ControlP5(this);
     NAT=new run();
   NAT.initializeNation();
@@ -105,7 +114,7 @@ void NextTurn(){
     NAT.turn(newBudget,(double)cp5.get(Numberbox.class,"InterestRate").getValue(),(double)cp5.get(Numberbox.class,"MaxTaxBracket").getValue());
     //Events.EventHappens(NAT.getNation());
     eventNew.setText("Guys, "+Events.getCurrent()).show();
-    delay(2000);
+    //delay(1000);
     eventNew.hide();
     
 }
