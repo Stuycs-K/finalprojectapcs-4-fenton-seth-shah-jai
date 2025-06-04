@@ -18,3 +18,6 @@ Made sure events existed, compiled all files and they work (with exception to ta
 
 ### 2025-05-28 - Finished All Code, Entered Debugging
 All code for the minimum viable product is done, having issues with joy autoset to 0, working on fixing
+
+### 2025-06-01 - Edited events, MVP is done
+Readded events to work properly, all work for the MVP is finished

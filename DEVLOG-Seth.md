@@ -13,3 +13,13 @@ Cleaned up nationState GDP Growth, took longer then expected to manage sector by
 
 ### 2025-05-28
 Spent all day reworking national debt handling, but now it mostly looks pretty normal. Modeled debt traps with joy decrease but might need to come up with better punishments later on. Still pretty solid though.
+
+### 2025-05-29
+Finally finished reworking national debt and joy to make the game better, tinkered with GDP Growth rate to fix the lack of default multiplying.
+
+
+### 2025-05-30
+Finished bonds completely, went through and tinkered with the internal systems to get GDP growth to look reasonable, it's still decent minus a massive reduction in taxes. 
+
+### 2025-06-2
+Finished tinkering with equations, mvp as a terminal game complete now time to convert everything to processing.
