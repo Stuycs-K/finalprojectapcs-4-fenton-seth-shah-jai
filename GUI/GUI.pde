@@ -9,6 +9,7 @@ double[] newBudget=new double[6];
 int background=color(255,255,255);
 
 void draw(){
+  background(background);
   text(run.ProcessCondition(), 300, 200);
 }
 
@@ -96,8 +97,4 @@ void NextTurn(){
     delay(4000);
     eventNew.hide();
     
-}
-
-void draw(){
-  background(background);
 }
