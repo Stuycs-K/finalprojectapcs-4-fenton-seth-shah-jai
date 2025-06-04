@@ -5,7 +5,10 @@ public class run{
   private nationState nation;
   Scanner read=new Scanner(System.in);
 
-
+public nationState getNation() {
+ return nation; 
+  
+}
 
   public void GrabUserInput(){
     userIn=new double[6];
@@ -22,6 +25,9 @@ public class run{
     taxBrak=read.nextDouble();
     read.nextLine();
   }
+  
+
+  
   public void ModifyNations(){
     System.out.println("Enter your new interest rate");
     GrabUserNum();
@@ -66,14 +72,7 @@ public class run{
     }
 */
   }
-  
-  
-  public nationState getNation() {
-   return nation; 
-  }
-  
-  
-  public void turn(){
+  public void turn(double[] userIn, double interestNum, double taxBrak){
     nation.adjustInstanceVariables(userIn,interestNum,taxBrak, nation);
   }
   
