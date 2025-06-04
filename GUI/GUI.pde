@@ -29,13 +29,13 @@ void setup(){
   cp5.addNumberbox("MaxTaxBracket")
     .setPosition(0,30)
     .setSize(70,60)
-    .setRange(0.0,100)
+    .setRange(0.0,1.0)
     .setValue((float) NAT.getNation().getMaxTaxBracket())
     .setLabel("Max Tax Bracket");
   cp5.addNumberbox("InterestRate") 
     .setPosition(70,30)
     .setSize(70,60)
-    .setRange(0.0,2.0 * (float) Math.pow(10,10))
+    .setRange(0.0, 3)
     .setValue((float) NAT.getNation().getInterestRate())
     .setLabel("Interest Rate")
   ;
