@@ -22,50 +22,50 @@ void setup(){
     //.setPosition()
     .setSize(200,60)
     .setRange(0.0,1.0)
-    //.setValue();
+    .setValue((float) NAT.getNation().getMaxTaxBracket())
     .setLabel("Max Tax Bracket");
   cp5.addNumberbox("InterestRate") 
     //.setPosition()
     .setSize(200,60)
     .setRange(0.0,2.0 * (float) Math.pow(10,60))
-    //.setValue();
+    .setValue((float) NAT.getNation().getInterestRate())
     .setLabel("Interest Rate")
   ;
   cp5.addNumberbox("MAN")
     //.setPosition()
     .setSize(200,60)
     //.setRange()
-    //.setValue();
+    .setValue((float) NAT.getNation().getGovBudgetBreakDown()[0])
     .setLabel("Manufacturing");
   cp5.addNumberbox("WEL")
     //.setPosition()
     .setSize(200,60)
     .setRange(0.0, 2.0 * (float) Math.pow(10,60))
-    //.setValue();
+    .setValue((float) NAT.getNation().getGovBudgetBreakDown()[1])
     .setLabel("Welfare");
   cp5.addNumberbox("HEL")
     //.setPosition()
     .setSize(200,60)
     .setRange(0.0, 2.0 * (float) Math.pow(10,60))
-    //.setValue();
+    .setValue((float) NAT.getNation().getGovBudgetBreakDown()[2])
     .setLabel("Healthcare");
   cp5.addNumberbox("SAL")
     //.setPosition()
     .setSize(200,60)
     .setRange(0.0, 2.0 * (float) Math.pow(10,60))
-    //.setValue();
+    .setValue((float) NAT.getNation().getGovBudgetBreakDown()[3])
     .setLabel("Salaries");  
   cp5.addNumberbox("MIL")
     //.setPosition()
     .setSize(200,60)
     .setRange(0.0, 2.0 * (float) Math.pow(10,60))
-    //.setValue();
+    .setValue((float) NAT.getNation().getGovBudgetBreakDown()[4])
     .setLabel("Military");
   cp5.addNumberbox("OTH")
     //.setPosition()
     .setSize(200,60)
     .setRange(0.0, 2.0 * (float) Math.pow(10,60))
-    //.setValue();
+    .setValue((float) NAT.getNation().getGovBudgetBreakDown()[5])
     .setLabel("Other");
     
     //Do this for all of them

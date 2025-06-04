@@ -66,6 +66,13 @@ public class run{
     }
 */
   }
+  
+  
+  public nationState getNation() {
+   return nation; 
+  }
+  
+  
   public void turn(){
     nation.adjustInstanceVariables(userIn,interestNum,taxBrak, nation);
   }
