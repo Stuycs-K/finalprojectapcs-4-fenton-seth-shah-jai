@@ -8,6 +8,10 @@ float taxBracket;
 double[] newBudget=new double[6];
 int background=color(255,255,255);
 
+void draw(){
+  text(run.ProcessCondition(), 300, 200);
+}
+
 void setup(){
   size(700,500);
   cp5=new ControlP5(this);
@@ -89,7 +93,7 @@ void NextTurn(){
     newBudget[5]=(double)cp5.get(Numberbox.class,"OTH").getValue();
     NAT.turn(newBudget,(double)cp5.get(Numberbox.class,"InterestRate").getValue(),(double)cp5.get(Numberbox.class,"MaxTaxBracket").getValue());
     eventNew.setText("Guys, "+Events.getCurrent()).show();
-    delay(1000);
+    delay(4000);
     eventNew.hide();
     
 }
