@@ -22,6 +22,9 @@ public class run{
     taxBrak=read.nextDouble();
     read.nextLine();
   }
+  
+
+  
   public void ModifyNations(){
     System.out.println("Enter your new interest rate");
     GrabUserNum();
@@ -66,7 +69,7 @@ public class run{
     }
 */
   }
-  public void turn(){
+  public void turn(double[] userIn, double interestNum, double taxBrak){
     nation.adjustInstanceVariables(userIn,interestNum,taxBrak, nation);
   }
   
