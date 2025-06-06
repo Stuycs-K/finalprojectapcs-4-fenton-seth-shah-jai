@@ -2,29 +2,44 @@ import controlP5.*;
 
 ControlP5 cp5;
 run NAT;
-Textlabel eventNew;
+Textarea eventNew;
 float interestRate;
 float taxBracket;
 double[] newBudget=new double[6];
 int background=color(140,140,140);
+int times=0;
+int showSwitch=0;
+PImage Hap;
+PImage Sad;
 
 void draw(){
-      fill(255, 0, 255);
+  background(loadImage("istockphoto-175600020-612x612.jpg"));
+  fill(255, 0, 255);
   rect(0, 100, 300, 225);
   fill(0);
   text(NAT.ProcessCondition(), 0, 120);
+  if(eventNew.isVisible()&&millis()-times>3000){
+    eventNew.hide();
+    showSwitch=0;
+  }
+  if(showSwitch==1){
+    image(Hap, 300, 300, 100,100);
+  }
+  if(showSwitch==2){
+    image(Sad, 300, 300, 100,100);
+  }
 }
 
 void setup(){
 
   PImage image = loadImage("istockphoto-175600020-612x612.jpg");
-
   background(image);
     size(612,407);
       fill(255, 0, 255);
     rect(0,20, 550, 30);
     fill(0);
-
+  Hap=loadImage("SomethingH.png");
+  Sad=loadImage("NothingE.jpg");
   cp5=new ControlP5(this);
     NAT=new run();
   NAT.initializeNation();
@@ -33,9 +48,11 @@ void setup(){
     .setPosition(500,200)
     .setSize(100,100)
     .setLabel("Turn End");
-  eventNew=cp5.addTextlabel("EventNew")
+  eventNew=cp5.addTextarea("EventNew")
     .setText("Awaiting something")
     .setPosition(300,300)
+    .setColor(0)
+    .setColorBackground(255)
     .hide();
   cp5.addNumberbox("MaxTaxBracket")
     .setPosition(0,0)
@@ -112,9 +129,15 @@ void NextTurn(){
     newBudget[4]=(double)cp5.get(Numberbox.class,"MIL").getValue();
     newBudget[5]=(double)cp5.get(Numberbox.class,"OTH").getValue();
     NAT.turn(newBudget,(double)cp5.get(Numberbox.class,"InterestRate").getValue(),(double)cp5.get(Numberbox.class,"MaxTaxBracket").getValue());
-    //Events.EventHappens(NAT.getNation());
-    eventNew.setText("Guys, "+Events.getCurrent()).show();
-    //delay(1000);
-    eventNew.hide();
-    
+    float Happening=random(1);
+    if(Happening<0.3){
+      Events.EventHappens(NAT.getNation());
+      eventNew.setText("Guys, "+Events.getCurrent()).show();
+      showSwitch=1;
+    }
+    else{
+      eventNew.setText("Guys, nothing ever happens").show();
+      showSwitch=2;
+    } 
+    times=millis();
 }
