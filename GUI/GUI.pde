@@ -8,8 +8,9 @@ float taxBracket;
 double[] newBudget=new double[6];
 int background=color(140,140,140);
 int times=0;
-
-
+int showSwitch=0;
+PImage Hap;
+PImage Sad;
 
 void draw(){
   background(loadImage("istockphoto-175600020-612x612.jpg"));
@@ -19,8 +20,14 @@ void draw(){
   text(NAT.ProcessCondition(), 0, 120);
   if(eventNew.isVisible()&&millis()-times>3000){
     eventNew.hide();
+    showSwitch=0;
   }
-  
+  if(showSwitch==1){
+    image(Hap, 300, 300, 100,100);
+  }
+  if(showSwitch==2){
+    image(Sad, 300, 300, 100,100);
+  }
 }
 
 void setup(){
@@ -31,7 +38,8 @@ void setup(){
       fill(255, 0, 255);
     rect(0,20, 550, 30);
     fill(0);
-
+  Hap=loadImage("SomethingH.png");
+  Sad=loadImage("NothingE.jpg");
   cp5=new ControlP5(this);
     NAT=new run();
   NAT.initializeNation();
@@ -125,9 +133,11 @@ void NextTurn(){
     if(Happening<0.3){
       Events.EventHappens(NAT.getNation());
       eventNew.setText("Guys, "+Events.getCurrent()).show();
+      showSwitch=1;
     }
     else{
       eventNew.setText("Guys, nothing ever happens").show();
+      showSwitch=2;
     } 
     times=millis();
 }
