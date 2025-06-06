@@ -9,11 +9,12 @@ double[] newBudget=new double[6];
 int background=color(140,140,140);
 int times=0;
 int showSwitch=0;
-PImage Hap;
-PImage Sad;
+
 
 void draw(){
   background(loadImage("istockphoto-175600020-612x612.jpg"));
+    PImage Hap=loadImage("SomethingH.png");
+  PImage Sad=loadImage("NothingE.jpg");
   fill(255, 0, 255);
   rect(0, 100, 300, 225);
   fill(0);
@@ -22,6 +23,7 @@ void draw(){
     eventNew.hide();
     showSwitch=0;
   }
+  System.out.println(showSwitch);
   if(showSwitch==1){
     image(Hap, 300, 300, 100,100);
   }
@@ -31,15 +33,16 @@ void draw(){
 }
 
 void setup(){
-
+  String[] eventText = loadStrings("Events.txt");
+  Events.eventMaker(eventText);
   PImage image = loadImage("istockphoto-175600020-612x612.jpg");
   background(image);
     size(612,407);
       fill(255, 0, 255);
     rect(0,20, 550, 30);
     fill(0);
-  Hap=loadImage("SomethingH.png");
-  Sad=loadImage("NothingE.jpg");
+  PImage Hap=loadImage("SomethingH.png");
+  PImage Sad=loadImage("NothingE.jpg");
   cp5=new ControlP5(this);
     NAT=new run();
   NAT.initializeNation();
@@ -129,15 +132,19 @@ void NextTurn(){
     newBudget[4]=(double)cp5.get(Numberbox.class,"MIL").getValue();
     newBudget[5]=(double)cp5.get(Numberbox.class,"OTH").getValue();
     NAT.turn(newBudget,(double)cp5.get(Numberbox.class,"InterestRate").getValue(),(double)cp5.get(Numberbox.class,"MaxTaxBracket").getValue());
-    float Happening=random(1);
-    if(Happening<0.3){
+    float Happening;
+    Happening = random(1);
+
+    System.out.println(Happening);
+    if(Happening  < 0.3){
+      showSwitch=1;
       Events.EventHappens(NAT.getNation());
       eventNew.setText("Guys, "+Events.getCurrent()).show();
-      showSwitch=1;
+
     }
     else{
-      eventNew.setText("Guys, nothing ever happens").show();
       showSwitch=2;
+      eventNew.setText("Guys, nothing ever happens").show();
     } 
     times=millis();
-}
+    }
