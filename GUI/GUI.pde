@@ -9,12 +9,15 @@ double[] newBudget=new double[6];
 int background=color(140,140,140);
 int times=0;
 
+
+
 void draw(){
-      fill(255, 0, 255);
+  background(loadImage("istockphoto-175600020-612x612.jpg"));
+  fill(255, 0, 255);
   rect(0, 100, 300, 225);
   fill(0);
   text(NAT.ProcessCondition(), 0, 120);
-  if(millis()-times>3000){
+  if(eventNew.isVisible()&&millis()-times>3000){
     eventNew.hide();
   }
   
@@ -23,7 +26,6 @@ void draw(){
 void setup(){
 
   PImage image = loadImage("istockphoto-175600020-612x612.jpg");
-
   background(image);
     size(612,407);
       fill(255, 0, 255);
@@ -119,7 +121,13 @@ void NextTurn(){
     newBudget[4]=(double)cp5.get(Numberbox.class,"MIL").getValue();
     newBudget[5]=(double)cp5.get(Numberbox.class,"OTH").getValue();
     NAT.turn(newBudget,(double)cp5.get(Numberbox.class,"InterestRate").getValue(),(double)cp5.get(Numberbox.class,"MaxTaxBracket").getValue());
-    Events.EventHappens(NAT.getNation());
-    eventNew.setText("Guys, "+Events.getCurrent()).show();
+    float Happening=random(1);
+    if(Happening<0.3){
+      Events.EventHappens(NAT.getNation());
+      eventNew.setText("Guys, "+Events.getCurrent()).show();
+    }
+    else{
+      eventNew.setText("Guys, nothing ever happens").show();
+    } 
     times=millis();
 }
