@@ -11,12 +11,12 @@ int times=0;
 int showSwitch=0;
 PImage Hap;
 PImage Sad;
-PImage Op=;
+PImage Op;
 int currentImage=0;
 
 void draw(){
   if(currentImage==0){
-    background(image(loadImage("Opening.jpg"),0,0,width,height));
+    //background(image(loadImage("Opening.jpg"),0,0,width,height));
   }
   else if(currentImage==1){
   background(loadImage("istockphoto-175600020-612x612.jpg"));
