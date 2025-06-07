@@ -6,21 +6,16 @@ public class Events{
     private static boolean hasMade=true;
     private static String current="Whatever man";
     
-    public static void eventMaker(String filename){
-        try{
-          File finding=new File ("../APCS/finalprojectapcs-4-fenton-seth-shah-jai/"+filename);
+    public static void eventMaker(String[] fileText){
           //Note, I need a new filepath
           //System.out.println(finding.getAbsolutePath());
-            Scanner fileScan=new Scanner(finding);
-            while(fileScan.hasNextLine()){
-                String line=fileScan.nextLine();
+            for (int i = 0; i < fileText.length; i++) {
+                String line=fileText[i];
                 String[] inputs=line.split(",");
                 int sign=Integer.parseInt(inputs[2]);
                 Event(inputs[0],sign*Double.parseDouble(inputs[1]));
             }
-        }catch(FileNotFoundException skill){
-            System.out.println("File not found. try again "+System.getProperty("user.dir"));
-        }
+       
     }
 
     public static void Event (String EventText, double changeRates){
@@ -42,12 +37,12 @@ public class Events{
 */
 
     public static void EventHappens(nationState nation){
-        if(hasMade){
-          eventMaker("Events.txt");
-          hasMade=false;
-        }
+
         Random rand=new Random();
+        //never generating the array list
+        System.out.println(events);
         int happening=rand.nextInt(events.size());
+        System.out.println(1);
         current=events.get(happening);
         System.out.println(events.get(happening));
         nation.setGEGM(changeRate.get(happening)*nation.getGEGM());
