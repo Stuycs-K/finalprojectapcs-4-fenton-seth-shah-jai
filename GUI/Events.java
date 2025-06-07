@@ -8,7 +8,10 @@ public class Events{
     
     public static void eventMaker(String filename){
         try{
-            Scanner fileScan=new Scanner(new File(filename));
+          File finding=new File ("../APCS/finalprojectapcs-4-fenton-seth-shah-jai/"+filename);
+          //Note, I need a new filepath
+          //System.out.println(finding.getAbsolutePath());
+            Scanner fileScan=new Scanner(finding);
             while(fileScan.hasNextLine()){
                 String line=fileScan.nextLine();
                 String[] inputs=line.split(",");
@@ -16,7 +19,7 @@ public class Events{
                 Event(inputs[0],sign*Double.parseDouble(inputs[1]));
             }
         }catch(FileNotFoundException skill){
-            System.out.println("File not found. try again");
+            System.out.println("File not found. try again "+System.getProperty("user.dir"));
         }
     }
 
