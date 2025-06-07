@@ -20,6 +20,8 @@ void draw(){
   }
   else if(currentImage==1){
   background(loadImage("istockphoto-175600020-612x612.jpg"));
+    PImage Hap=loadImage("SomethingH.png");
+  PImage Sad=loadImage("NothingE.jpg");
   fill(255, 0, 255);
   rect(0, 100, 300, 225);
   fill(0);
@@ -28,6 +30,7 @@ void draw(){
     eventNew.hide();
     showSwitch=0;
   }
+  System.out.println(showSwitch);
   if(showSwitch==1){
     image(Hap, 300, 300, 100,100);
   }
@@ -38,15 +41,16 @@ void draw(){
 }
 
 void setup(){
-
+  String[] eventText = loadStrings("Events.txt");
+  Events.eventMaker(eventText);
   PImage image = loadImage("istockphoto-175600020-612x612.jpg");
   background(image);
     size(612,407);
       fill(255, 0, 255);
     rect(0,20, 550, 30);
     fill(0);
-  Hap=loadImage("SomethingH.png");
-  Sad=loadImage("NothingE.jpg");
+  PImage Hap=loadImage("SomethingH.png");
+  PImage Sad=loadImage("NothingE.jpg");
   cp5=new ControlP5(this);
     NAT=new run();
   NAT.initializeNation();
@@ -151,23 +155,26 @@ void GER(){
 }
 
 void NextTurn(){
-    //System.out.println("{ressed");
-    newBudget[0]=Double.parseDouble(cp5.get(Textfield.class,"MAN").getText());
-    newBudget[1]=Double.parseDouble(cp5.get(Textfield.class,"WEL").getText());
-    newBudget[2]=Double.parseDouble(cp5.get(Textfield.class,"HEL").getText());
-    newBudget[3]=Double.parseDouble(cp5.get(Textfield.class,"SAL").getText());
-    newBudget[4]=Double.parseDouble(cp5.get(Textfield.class,"MIL").getText());
-    newBudget[5]=Double.parseDouble(cp5.get(Textfield.class,"OTH").getText());
-    NAT.turn(newBudget,Double.parseDouble(cp5.get(Textfield.class,"InterestRate").getText()),Double.parseDouble(cp5.get(Textfield.class,"MaxTaxBracket").getText()));
-    float Happening=random(1);
-    if(Happening<0.3){
+    newBudget[0]=(double)cp5.get(Numberbox.class,"MAN").getValue();
+    newBudget[1]=(double)cp5.get(Numberbox.class,"WEL").getValue();
+    newBudget[2]=(double)cp5.get(Numberbox.class,"HEL").getValue();
+    newBudget[3]=(double)cp5.get(Numberbox.class,"SAL").getValue();
+    newBudget[4]=(double)cp5.get(Numberbox.class,"MIL").getValue();
+    newBudget[5]=(double)cp5.get(Numberbox.class,"OTH").getValue();
+    NAT.turn(newBudget,(double)cp5.get(Numberbox.class,"InterestRate").getValue(),(double)cp5.get(Numberbox.class,"MaxTaxBracket").getValue());
+    float Happening;
+    Happening = random(1);
+
+    System.out.println(Happening);
+    if(Happening  < 0.3){
+      showSwitch=1;
       Events.EventHappens(NAT.getNation());
       eventNew.setText("Guys, "+Events.getCurrent()).show();
-      showSwitch=1;
+
     }
     else{
-      eventNew.setText("Guys, nothing ever happens").show();
       showSwitch=2;
+      eventNew.setText("Guys, nothing ever happens").show();
     } 
     times=millis();
-}
+    }

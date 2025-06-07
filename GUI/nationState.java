@@ -1,3 +1,4 @@
+
 import java.util.*;
 public class nationState {
   //I think we have to do an ArrayListOfBonds
