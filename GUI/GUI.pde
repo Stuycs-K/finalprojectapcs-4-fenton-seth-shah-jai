@@ -9,9 +9,16 @@ double[] newBudget=new double[6];
 int background=color(140,140,140);
 int times=0;
 int showSwitch=0;
-
+PImage Hap;
+PImage Sad;
+PImage Op;
+int currentImage=0;
 
 void draw(){
+  if(currentImage==0){
+    //background(image(loadImage("Opening.jpg"),0,0,width,height));
+  }
+  else if(currentImage==1){
   background(loadImage("istockphoto-175600020-612x612.jpg"));
     PImage Hap=loadImage("SomethingH.png");
   PImage Sad=loadImage("NothingE.jpg");
@@ -29,6 +36,7 @@ void draw(){
   }
   if(showSwitch==2){
     image(Sad, 300, 300, 100,100);
+  }
   }
 }
 
@@ -108,10 +116,19 @@ void setup(){
     .setText(str((float) NAT.getNation().getGovBudgetBreakDown()[5]))
     .setLabel("Other");
 
-
-
-
-
+  cp5.addButton("GER")
+    .setPosition(500,200)
+    .setSize(100,100)
+    .setLabel("Germany");
+  cp5.getController("NextTurn").hide();
+  cp5.getController("MaxTaxBracket").hide();
+  cp5.getController("InterestRate").hide();
+  cp5.getController("MAN").hide();
+  cp5.getController("WEL").hide();
+  cp5.getController("HEL").hide();
+  cp5.getController("SAL").hide();
+  cp5.getController("MIL").hide();
+  cp5.getController("OTH").hide();
 
     
     //Do this for all of them
@@ -121,6 +138,20 @@ void setup(){
   //radio button as my event. Super events?
   //
   //
+}
+
+void GER(){
+  cp5.getController("GER").hide();
+  currentImage=1;
+  cp5.getController("NextTurn").show();
+  cp5.getController("MaxTaxBracket").show();
+  cp5.getController("InterestRate").show();
+  cp5.getController("MAN").show();
+  cp5.getController("WEL").show();
+  cp5.getController("HEL").show();
+  cp5.getController("SAL").show();
+  cp5.getController("MIL").show();
+  cp5.getController("OTH").show();
 }
 
 void NextTurn(){
