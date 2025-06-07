@@ -54,55 +54,55 @@ void setup(){
     .setColor(0)
     .setColorBackground(255)
     .hide();
-  cp5.addNumberbox("MaxTaxBracket")
+  cp5.addTextfield("MaxTaxBracket")
     .setPosition(0,0)
     .setSize(70,30)
-    .setRange(0.0,1.0)
-    .setValue((float) NAT.getNation().getMaxTaxBracket())
+    //.setRange(0.0,1.0)
+    .setText(str((float) NAT.getNation().getMaxTaxBracket()))
     .setLabel("Max Tax Bracket");
-  cp5.addNumberbox("InterestRate") 
+  cp5.addTextfield("InterestRate") 
     .setPosition(70,0)
     .setSize(70,30)
-    .setRange(0.0, 3)
-    .setValue((float) NAT.getNation().getInterestRate())
+    //.setRange(0.0, 3)
+    .setText(str((float) NAT.getNation().getInterestRate()))
     .setLabel("Interest Rate")
   ;
   
-  cp5.addNumberbox("MAN")
+  cp5.addTextfield("MAN")
     .setPosition(140,0)
     .setSize(70,30)
-    .setRange(0.0, 2.0 * (float) Math.pow(10,10))
-    .setValue((float) NAT.getNation().getGovBudgetBreakDown()[0])
+    //.setRange(0.0, 2.0 * (float) Math.pow(10,10))
+    .setText(str((float) NAT.getNation().getGovBudgetBreakDown()[0]))
     .setLabel("Manufacturing");
-  cp5.addNumberbox("WEL")
+  cp5.addTextfield("WEL")
     .setPosition(210,0)
     .setSize(70,30)
-    .setRange(0.0, 2.0 * (float) Math.pow(10,10))
-    .setValue((float) NAT.getNation().getGovBudgetBreakDown()[1])
+    //.setRange(0.0, 2.0 * (float) Math.pow(10,10))
+    .setText(str((float) NAT.getNation().getGovBudgetBreakDown()[1]))
     .setLabel("Welfare");
-  cp5.addNumberbox("HEL")
+  cp5.addTextfield("HEL")
   .setPosition(280,0)
     .setSize(70,30)
-    .setRange(0.0, 2.0 * (float) Math.pow(10,10))
-    .setValue((float) NAT.getNation().getGovBudgetBreakDown()[2])
+    //.setRange(0.0, 2.0 * (float) Math.pow(10,10))
+    .setText(str((float) NAT.getNation().getGovBudgetBreakDown()[2]))
     .setLabel("Healthcare");
-  cp5.addNumberbox("SAL")
+  cp5.addTextfield("SAL")
    .setPosition(350,0)
     .setSize(70,30)
-    .setRange(0.0, 2.0 * (float) Math.pow(10,10))
-    .setValue((float) NAT.getNation().getGovBudgetBreakDown()[3])
+    //.setRange(0.0, 2.0 * (float) Math.pow(10,10))
+    .setText(str((float) NAT.getNation().getGovBudgetBreakDown()[3]))
     .setLabel("Salaries");  
-  cp5.addNumberbox("MIL")
+  cp5.addTextfield("MIL")
     .setPosition(420,0)
     .setSize(70,30)
-    .setRange(0.0, 2.0 * (float) Math.pow(10,10))
-    .setValue((float) NAT.getNation().getGovBudgetBreakDown()[4])
+    //.setRange(0.0, 2.0 * (float) Math.pow(10,10))
+    .setText(str((float) NAT.getNation().getGovBudgetBreakDown()[4]))
     .setLabel("Military");
-  cp5.addNumberbox("OTH")
+  cp5.addTextfield("OTH")
     .setPosition(490,0)
     .setSize(70,30)
-    .setRange(0.0, 2.0 * (float) Math.pow(10,10))
-    .setValue((float) NAT.getNation().getGovBudgetBreakDown()[5])
+    //.setRange(0.0, 2.0 * (float) Math.pow(10,10))
+    .setText(str((float) NAT.getNation().getGovBudgetBreakDown()[5]))
     .setLabel("Other");
 
 
@@ -122,13 +122,13 @@ void setup(){
 
 void NextTurn(){
     //System.out.println("{ressed");
-    newBudget[0]=(double)cp5.get(Numberbox.class,"MAN").getValue();
-    newBudget[1]=(double)cp5.get(Numberbox.class,"WEL").getValue();
-    newBudget[2]=(double)cp5.get(Numberbox.class,"HEL").getValue();
-    newBudget[3]=(double)cp5.get(Numberbox.class,"SAL").getValue();
-    newBudget[4]=(double)cp5.get(Numberbox.class,"MIL").getValue();
-    newBudget[5]=(double)cp5.get(Numberbox.class,"OTH").getValue();
-    NAT.turn(newBudget,(double)cp5.get(Numberbox.class,"InterestRate").getValue(),(double)cp5.get(Numberbox.class,"MaxTaxBracket").getValue());
+    newBudget[0]=Double.parseDouble(cp5.get(Textfield.class,"MAN").getText());
+    newBudget[1]=Double.parseDouble(cp5.get(Textfield.class,"WEL").getText());
+    newBudget[2]=Double.parseDouble(cp5.get(Textfield.class,"HEL").getText());
+    newBudget[3]=Double.parseDouble(cp5.get(Textfield.class,"SAL").getText());
+    newBudget[4]=Double.parseDouble(cp5.get(Textfield.class,"MIL").getText());
+    newBudget[5]=Double.parseDouble(cp5.get(Textfield.class,"OTH").getText());
+    NAT.turn(newBudget,Double.parseDouble(cp5.get(Textfield.class,"InterestRate").getText()),Double.parseDouble(cp5.get(Textfield.class,"MaxTaxBracket").getText()));
     float Happening=random(1);
     if(Happening<0.3){
       Events.EventHappens(NAT.getNation());
