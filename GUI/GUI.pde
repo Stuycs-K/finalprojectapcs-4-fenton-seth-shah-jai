@@ -38,6 +38,9 @@ void setup(){
       fill(255, 0, 255);
     rect(0,20, 550, 30);
     fill(0);
+      String[] eventText = loadStrings("Events.txt");
+
+      Events.eventMaker(eventText);
   Hap=loadImage("SomethingH.png");
   Sad=loadImage("NothingE.jpg");
   cp5=new ControlP5(this);
