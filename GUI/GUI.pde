@@ -11,17 +11,9 @@ int times=0;
 int showSwitch=0;
 PImage Hap;
 PImage Sad;
-PImage Op;
-int currentImage=0;
 
 void draw(){
-  if(currentImage==0){
-    //background(image(loadImage("Opening.jpg"),0,0,width,height));
-  }
-  else if(currentImage==1){
   background(loadImage("istockphoto-175600020-612x612.jpg"));
-    PImage Hap=loadImage("SomethingH.png");
-  PImage Sad=loadImage("NothingE.jpg");
   fill(255, 0, 255);
   rect(0, 100, 300, 225);
   fill(0);
@@ -30,31 +22,28 @@ void draw(){
     eventNew.hide();
     showSwitch=0;
   }
-  System.out.println(showSwitch);
   if(showSwitch==1){
     image(Hap, 300, 300, 100,100);
   }
   if(showSwitch==2){
     image(Sad, 300, 300, 100,100);
   }
-  }
 }
 
 void setup(){
-  String[] eventText = loadStrings("Events.txt");
-  Events.eventMaker(eventText);
+
   PImage image = loadImage("istockphoto-175600020-612x612.jpg");
   background(image);
     size(612,407);
       fill(255, 0, 255);
     rect(0,20, 550, 30);
     fill(0);
-  PImage Hap=loadImage("SomethingH.png");
-  PImage Sad=loadImage("NothingE.jpg");
+  Hap=loadImage("SomethingH.png");
+  Sad=loadImage("NothingE.jpg");
   cp5=new ControlP5(this);
     NAT=new run();
   NAT.initializeNation();
-  
+
   cp5.addButton("NextTurn")
     .setPosition(500,200)
     .setSize(100,100)
@@ -78,7 +67,7 @@ void setup(){
     .setText(str((float) NAT.getNation().getInterestRate()))
     .setLabel("Interest Rate")
   ;
-  
+
   cp5.addTextfield("MAN")
     .setPosition(140,0)
     .setSize(70,30)
@@ -116,21 +105,12 @@ void setup(){
     .setText(str((float) NAT.getNation().getGovBudgetBreakDown()[5]))
     .setLabel("Other");
 
-  cp5.addButton("GER")
-    .setPosition(500,200)
-    .setSize(100,100)
-    .setLabel("Germany");
-  cp5.getController("NextTurn").hide();
-  cp5.getController("MaxTaxBracket").hide();
-  cp5.getController("InterestRate").hide();
-  cp5.getController("MAN").hide();
-  cp5.getController("WEL").hide();
-  cp5.getController("HEL").hide();
-  cp5.getController("SAL").hide();
-  cp5.getController("MIL").hide();
-  cp5.getController("OTH").hide();
 
-    
+
+
+
+
+
     //Do this for all of them
 
 
@@ -140,41 +120,24 @@ void setup(){
   //
 }
 
-void GER(){
-  cp5.getController("GER").hide();
-  currentImage=1;
-  cp5.getController("NextTurn").show();
-  cp5.getController("MaxTaxBracket").show();
-  cp5.getController("InterestRate").show();
-  cp5.getController("MAN").show();
-  cp5.getController("WEL").show();
-  cp5.getController("HEL").show();
-  cp5.getController("SAL").show();
-  cp5.getController("MIL").show();
-  cp5.getController("OTH").show();
-}
-
 void NextTurn(){
-    newBudget[0]=(double)cp5.get(Numberbox.class,"MAN").getValue();
-    newBudget[1]=(double)cp5.get(Numberbox.class,"WEL").getValue();
-    newBudget[2]=(double)cp5.get(Numberbox.class,"HEL").getValue();
-    newBudget[3]=(double)cp5.get(Numberbox.class,"SAL").getValue();
-    newBudget[4]=(double)cp5.get(Numberbox.class,"MIL").getValue();
-    newBudget[5]=(double)cp5.get(Numberbox.class,"OTH").getValue();
-    NAT.turn(newBudget,(double)cp5.get(Numberbox.class,"InterestRate").getValue(),(double)cp5.get(Numberbox.class,"MaxTaxBracket").getValue());
-    float Happening;
-    Happening = random(1);
-
-    System.out.println(Happening);
-    if(Happening  < 0.3){
-      showSwitch=1;
+    //System.out.println("{ressed");
+    newBudget[0]=Double.parseDouble(cp5.get(Textfield.class,"MAN").getText());
+    newBudget[1]=Double.parseDouble(cp5.get(Textfield.class,"WEL").getText());
+    newBudget[2]=Double.parseDouble(cp5.get(Textfield.class,"HEL").getText());
+    newBudget[3]=Double.parseDouble(cp5.get(Textfield.class,"SAL").getText());
+    newBudget[4]=Double.parseDouble(cp5.get(Textfield.class,"MIL").getText());
+    newBudget[5]=Double.parseDouble(cp5.get(Textfield.class,"OTH").getText());
+    NAT.turn(newBudget,Double.parseDouble(cp5.get(Textfield.class,"InterestRate").getText()),Double.parseDouble(cp5.get(Textfield.class,"MaxTaxBracket").getText()));
+    float Happening=random(1);
+    if(Happening<0.3){
       Events.EventHappens(NAT.getNation());
       eventNew.setText("Guys, "+Events.getCurrent()).show();
-
+      showSwitch=1;
     }
     else{
-      showSwitch=2;
       eventNew.setText("Guys, nothing ever happens").show();
+      showSwitch=2;
     } 
     times=millis();
-    }
+}
