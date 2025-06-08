@@ -24,7 +24,7 @@ void draw(){
   else if(currentImage==1){
   background(loadImage("istockphoto-175600020-612x612.jpg"));
   fill(255, 0, 255);
-  rect(0, 100, 300, 225);
+  rect(0, 100, 300, 250);
   fill(0);
   textSize(12);
   text(NAT.ProcessCondition(), 0, 120);
