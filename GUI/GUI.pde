@@ -18,7 +18,7 @@ void draw(){
   if(currentImage==0){
     background(0);
     image(opening, 0,0, width,height);
-    textSize(45);
+    textSize(40);
     text("Welcome to Economy Simulator",0,40);
   }
   else if(currentImage==1){
@@ -26,16 +26,17 @@ void draw(){
   fill(255, 0, 255);
   rect(0, 100, 300, 225);
   fill(0);
+  textSize(12);
   text(NAT.ProcessCondition(), 0, 120);
   if(eventNew.isVisible()&&millis()-times>3000){
     eventNew.hide();
     showSwitch=0;
   }
   if(showSwitch==1){
-    image(Hap, 300, 300, 100,100);
+    image(Hap, 300, 300, 200,100);
   }
   if(showSwitch==2){
-    image(Sad, 300, 300, 100,100);
+    image(Sad, 300, 300, 200,100);
   }
   }
   else if(currentImage==2){
@@ -55,7 +56,7 @@ void setup(){
     rect(0,20, 550, 30);
     fill(0);
       String[] eventText = loadStrings("Events.txt");
-
+  
       Events.eventMaker(eventText);
   Hap=loadImage("SomethingH.png");
   Sad=loadImage("NothingE.jpg");
@@ -70,8 +71,9 @@ void setup(){
   eventNew=cp5.addTextarea("EventNew")
     .setText("Awaiting something")
     .setPosition(300,300)
-    .setColor(0)
-    .setColorBackground(255)
+    .setColor(160)
+    .setColorBackground(color(255,255,255,0))
+    .setSize(200,100)
     .hide();
   cp5.addTextfield("MaxTaxBracket")
     .setPosition(0,0)
