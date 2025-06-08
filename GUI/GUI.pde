@@ -11,11 +11,15 @@ int times=0;
 int showSwitch=0;
 PImage Hap;
 PImage Sad;
+PImage opening, closing;
 int currentImage=0;
 
 void draw(){
   if(currentImage==0){
-    //background(image(loadImage("Opening.jpg"),0,0,width,height));
+    background(0);
+    image(opening, 0,0, width,height);
+    textSize(45);
+    text("Welcome to Economy Simulator",0,40);
   }
   else if(currentImage==1){
   background(loadImage("istockphoto-175600020-612x612.jpg"));
@@ -34,10 +38,17 @@ void draw(){
     image(Sad, 300, 300, 100,100);
   }
   }
+  else if(currentImage==2){
+    background(0);
+    image(closing, 0,0, width,height);
+    text("Game Over",width/2,height/2);
+  }
 }
 void setup(){
 
   PImage image = loadImage("istockphoto-175600020-612x612.jpg");
+  opening=loadImage("Opening.jpg");
+  closing=loadImage("Lose.jpg");
   background(image);
     size(612,407);
       fill(255, 0, 255);
