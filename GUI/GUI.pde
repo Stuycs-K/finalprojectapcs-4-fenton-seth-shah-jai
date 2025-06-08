@@ -11,40 +11,54 @@ int times=0;
 int showSwitch=0;
 PImage Hap;
 PImage Sad;
+PImage opening, closing;
 int currentImage=0;
 
 void draw(){
   if(currentImage==0){
-    //background(image(loadImage("Opening.jpg"),0,0,width,height));
+    background(0);
+    image(opening, 0,0, width,height);
+    textSize(40);
+    text("Welcome to Economy Simulator",0,40);
   }
   else if(currentImage==1){
   background(loadImage("istockphoto-175600020-612x612.jpg"));
   fill(255, 0, 255);
   rect(0, 100, 300, 225);
   fill(0);
+  textSize(12);
   text(NAT.ProcessCondition(), 0, 120);
   if(eventNew.isVisible()&&millis()-times>3000){
     eventNew.hide();
     showSwitch=0;
   }
   if(showSwitch==1){
-    image(Hap, 300, 300, 100,100);
+    image(Hap, 300, 300, 200,100);
   }
   if(showSwitch==2){
-    image(Sad, 300, 300, 100,100);
+    image(Sad, 300, 300, 200,100);
   }
+  }
+  else if(currentImage==2){
+    background(0);
+    textSize(24);
+    fill(255);
+    image(closing, 0,0, width,height);
+    text("Game Over, you've been kicked out for gross incompetence",0,20);
   }
 }
 void setup(){
 
   PImage image = loadImage("istockphoto-175600020-612x612.jpg");
+  opening=loadImage("Opening.jpg");
+  closing=loadImage("Lose.jpg");
   background(image);
     size(612,407);
       fill(255, 0, 255);
     rect(0,20, 550, 30);
     fill(0);
       String[] eventText = loadStrings("Events.txt");
-
+  
       Events.eventMaker(eventText);
   Hap=loadImage("SomethingH.png");
   Sad=loadImage("NothingE.jpg");
@@ -59,8 +73,9 @@ void setup(){
   eventNew=cp5.addTextarea("EventNew")
     .setText("Awaiting something")
     .setPosition(300,300)
-    .setColor(0)
-    .setColorBackground(255)
+    .setColor(160)
+    .setColorBackground(color(255,255,255,0))
+    .setSize(200,100)
     .hide();
   cp5.addTextfield("MaxTaxBracket")
     .setPosition(0,0)
@@ -276,6 +291,7 @@ void JAP() {
 
 
 void NextTurn(){
+  
     //System.out.println("{ressed");
     newBudget[0]=Double.parseDouble(cp5.get(Textfield.class,"MAN").getText());
     newBudget[1]=Double.parseDouble(cp5.get(Textfield.class,"WEL").getText());
@@ -285,6 +301,7 @@ void NextTurn(){
     newBudget[5]=Double.parseDouble(cp5.get(Textfield.class,"OTH").getText());
     NAT.turn(newBudget,Double.parseDouble(cp5.get(Textfield.class,"InterestRate").getText()),Double.parseDouble(cp5.get(Textfield.class,"MaxTaxBracket").getText()));
     float Happening=random(1);
+    if(NAT.getNation().getJoy()>=20){    
     if(Happening<0.3){
       Events.EventHappens(NAT.getNation());
       eventNew.setText("Guys, "+Events.getCurrent()).show();
@@ -295,4 +312,17 @@ void NextTurn(){
       showSwitch=2;
     } 
     times=millis();
+   }
+  else{
+      cp5.getController("NextTurn").hide();
+  cp5.getController("MaxTaxBracket").hide();
+  cp5.getController("InterestRate").hide();
+  cp5.getController("MAN").hide();
+  cp5.getController("WEL").hide();
+  cp5.getController("HEL").hide();
+  cp5.getController("SAL").hide();
+  cp5.getController("MIL").hide();
+  cp5.getController("OTH").hide(); 
+    currentImage=2;
+  }
 }
