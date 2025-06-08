@@ -78,10 +78,10 @@ public nationState getNation() {
   public void turn(double[] userIn, double interestNum, double taxBrak){
     nation.adjustInstanceVariables(userIn,interestNum,taxBrak, nation);
   }
-  
-  public boolean initializeNation(){
+  //0.01,2000.0,800.0,500.0,400.0,0.02,0.03,0.015,20.0,83000000,new double[]{100.0, 200.0, 150.0, 250.0, 300.0, 100.0},915.9,2000.0,0.45,915.9, 50.0
+  public boolean initializeNation(double populationGrowthRate,double ConsumerSpending, double Investment,  double Exports, double Imports, double DefaultGDPGrowthRate, double interestRate, double inflationRate,double initialInterestPayment,double population, double[] govBudgetBreakDown, double taxRevenue, double initialnationalDebt, double maxTaxBracket, double spendableTaxRevenue, double joy){
   //double populationGrowthRate,double ConsumerSpending, double Investment,  double Exports, double Imports, double DefaultGDPGrowthRate, double interestRate, double inflationRate,double initialInterestPayment,double population, double[] govBudgetBreakDown, double taxRevenue, double initialnationalDebt, double maxTaxBracket, double spendableTaxRevenue, double joy
-    nation=new nationState(0.01,2000.0,800.0,500.0,400.0,0.02,0.03,0.015,20.0,83000000,new double[]{100.0, 200.0, 150.0, 250.0, 300.0, 100.0},915.9,2000.0,0.45,915.9, 50.0);
+    nation=new nationState(populationGrowthRate,ConsumerSpending, Investment, Exports, Imports, DefaultGDPGrowthRate, interestRate,inflationRate,initialInterestPayment, population, govBudgetBreakDown, taxRevenue,  initialnationalDebt,  maxTaxBracket,  spendableTaxRevenue,  joy);
     //Use initializeNation to get code when we integrate other stuff in, use userIn for that
     return false;
   }
@@ -104,7 +104,7 @@ public nationState getNation() {
   }
 
   public void run(){
-      initializeNation();
+      initializeNation(0.01,2000.0,800.0,500.0,400.0,0.02,0.03,0.015,20.0,83000000,new double[]{100.0, 200.0, 150.0, 250.0, 300.0, 100.0},915.9,2000.0,0.45,915.9, 50.0);
       //System.out.println(nation.getJoy());
       while(nation.getJoy()>0){
         GrabConditions();
