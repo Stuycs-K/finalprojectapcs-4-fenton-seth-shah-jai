@@ -64,7 +64,7 @@ void setup(){
   Sad=loadImage("NothingE.jpg");
   cp5=new ControlP5(this);
     NAT=new run();
-  NAT.initializeNation (100,100,100,100,100,100,100,100,100,100,new double[]{100, 100, 100, 100, 100, 100},100,100,100,100, 100);
+  NAT.initializeNation ("Default",100,100,100,100,100,100,100,100,100,100,new double[]{100, 100, 100, 100, 100, 100},100,100,100,100, 100);
 
   cp5.addButton("NextTurn")
     .setPosition(500,200)
@@ -128,13 +128,21 @@ void setup(){
     .setText(str((float) NAT.getNation().getGovBudgetBreakDown()[5]))
     .setLabel("Other");
   cp5.addButton("GER")
-    .setPosition(500,200)
+    .setPosition(500,100)
     .setSize(100,100)
     .setLabel("Germany");
       cp5.addButton("JAP")
-    .setPosition(300,200)
+    .setPosition(300,100)
     .setSize(100,100)
     .setLabel("Japan");
+          cp5.addButton("CHIN")
+    .setPosition(100,100)
+    .setSize(100,100)
+    .setLabel("China");
+              cp5.addButton("US")
+    .setPosition(300,300)
+    .setSize(100,100)
+    .setLabel("United States");
   cp5.getController("NextTurn").hide();
   cp5.getController("MaxTaxBracket").hide();
   cp5.getController("InterestRate").hide();
@@ -155,10 +163,12 @@ void setup(){
   //
 }
 void GER(){
-  cp5.getController("GER").hide();
-    cp5.getController("JAP").hide();
+   cp5.getController("JAP").hide();
+     cp5.getController("GER").hide();
+     cp5.getController("CHIN").hide();
+     cp5.getController("US").hide();
 
-    NAT.initializeNation (0.01,2000.0,800.0,500.0,400.0,0.02,0.03,0.015,20.0,83000000,new double[]{140.0, 250.0, 200.0, 250.0, 110.0, 150.0},915.9,2000.0,0.45,915.9, 50.0);
+    NAT.initializeNation ("Germany",0.01,2000.0,800.0,500.0,400.0,0.02,0.03,0.015,20.0,83000000,new double[]{140.0, 250.0, 200.0, 250.0, 110.0, 150.0},915.9,2000.0,0.45,915.9, 50.0);
   currentImage=1;
     cp5.addTextfield("MaxTaxBracket")
     .setPosition(0,0)
@@ -223,10 +233,12 @@ void GER(){
 void JAP() {
    cp5.getController("JAP").hide();
      cp5.getController("GER").hide();
+     cp5.getController("CHIN").hide();
+     cp5.getController("US").hide();
 
    //double populationGrowthRate,double ConsumerSpending, double Investment,  double Exports, double Imports, double DefaultGDPGrowthRate, double interestRate, double inflationRate,double initialInterestPayment,double population, double[] govBudgetBreakDown, double taxRevenue, double initialnationalDebt, double maxTaxBracket, double spendableTaxRevenue, double joy
     //manufacturing (standin for most subsidies), non healthcare welfare, healthcare, salaries (standin for most pensions and labor expenditures), millitary, anythingElse
-  NAT.initializeNation (-.049,1981.33,783.3,916.9,742.9,0.0149,0.005,0.036,169,123000000,new double[]{110.0, 338.0, 317.0, 100.0, 56.0, 200.0},1000,9000.0,0.40,1000, 70.0);
+  NAT.initializeNation ("Japan",-.049,1981.33,783.3,916.9,742.9,0.0149,0.005,0.036,169,123000000,new double[]{110.0, 338.0, 317.0, 100.0, 56.0, 200.0},1000,9000.0,0.40,1000, 100.0);
   currentImage=1;
     cp5.addTextfield("MaxTaxBracket")
     .setPosition(0,0)
@@ -287,6 +299,152 @@ void JAP() {
   cp5.getController("MIL").show();
   cp5.getController("OTH").show(); 
 }
+
+
+void CHIN() {
+   cp5.getController("JAP").hide();
+     cp5.getController("GER").hide();
+     cp5.getController("CHIN").hide();
+     cp5.getController("US").hide();
+
+   //double populationGrowthRate,double ConsumerSpending, double Investment,  double Exports, double Imports, double DefaultGDPGrowthRate, double interestRate, double inflationRate,double initialInterestPayment,double population, double[] govBudgetBreakDown, double taxRevenue, double initialnationalDebt, double maxTaxBracket, double spendableTaxRevenue, double joy
+    //manufacturing (standin for most subsidies), non healthcare welfare, healthcare, salaries (standin for most pensions and labor expenditures), millitary, anythingElse
+//NAT.initializeNation("China",-.001,7680, 7290, 3510, 2590, .05, .03, .002, 170,14200000000 ,new double[]{110.0, 338.0, 317.0, 100.0, 56.0, 200.0},1000,9000.0,0.40,1000, 100.0);
+  NAT.initializeNation ("China",-.001,7680,7290,3510,2590,0.05,.03,0.002,170, 1420000000,new double[]{400, 597, 1200, 300.0, 309.0, 300.0},2420,15000.0,0.45,2420, 120.0);
+
+  currentImage=1;
+    cp5.addTextfield("MaxTaxBracket")
+    .setPosition(0,0)
+    .setSize(70,30)
+    //.setRange(0.0,1.0)
+    .setText(str((float) NAT.getNation().getMaxTaxBracket()))
+    .setLabel("Max Tax Bracket");
+  cp5.addTextfield("InterestRate") 
+    .setPosition(70,0)
+    .setSize(70,30)
+    //.setRange(0.0, 3)
+    .setText(str((float) NAT.getNation().getInterestRate()))
+    .setLabel("Interest Rate")
+  ;
+    cp5.addTextfield("MAN")
+    .setPosition(140,0)
+    .setSize(70,30)
+    //.setRange(0.0, 2.0 * (float) Math.pow(10,10))
+    .setText(str((float) NAT.getNation().getGovBudgetBreakDown()[0]))
+    .setLabel("Manufacturing");
+  cp5.addTextfield("WEL")
+    .setPosition(210,0)
+    .setSize(70,30)
+    //.setRange(0.0, 2.0 * (float) Math.pow(10,10))
+    .setText(str((float) NAT.getNation().getGovBudgetBreakDown()[1]))
+    .setLabel("Welfare");
+  cp5.addTextfield("HEL")
+  .setPosition(280,0)
+    .setSize(70,30)
+    //.setRange(0.0, 2.0 * (float) Math.pow(10,10))
+    .setText(str((float) NAT.getNation().getGovBudgetBreakDown()[2]))
+    .setLabel("Healthcare");
+  cp5.addTextfield("SAL")
+   .setPosition(350,0)
+    .setSize(70,30)
+    //.setRange(0.0, 2.0 * (float) Math.pow(10,10))
+    .setText(str((float) NAT.getNation().getGovBudgetBreakDown()[3]))
+    .setLabel("Salaries");  
+  cp5.addTextfield("MIL")
+    .setPosition(420,0)
+    .setSize(70,30)
+    //.setRange(0.0, 2.0 * (float) Math.pow(10,10))
+    .setText(str((float) NAT.getNation().getGovBudgetBreakDown()[4]))
+    .setLabel("Military");
+  cp5.addTextfield("OTH")
+    .setPosition(490,0)
+    .setSize(70,30)
+    //.setRange(0.0, 2.0 * (float) Math.pow(10,10))
+    .setText(str((float) NAT.getNation().getGovBudgetBreakDown()[5]))
+    .setLabel("Other");
+  cp5.getController("NextTurn").show();
+  cp5.getController("MaxTaxBracket").show();
+  cp5.getController("InterestRate").show();
+  cp5.getController("MAN").show();
+  cp5.getController("WEL").show();
+  cp5.getController("HEL").show();
+  cp5.getController("SAL").show();
+  cp5.getController("MIL").show();
+  cp5.getController("OTH").show(); 
+}
+
+void US() {
+   cp5.getController("JAP").hide();
+     cp5.getController("GER").hide();
+     cp5.getController("CHIN").hide();
+     cp5.getController("US").hide();
+
+   //double populationGrowthRate,double ConsumerSpending, double Investment,  double Exports, double Imports, double DefaultGDPGrowthRate, double interestRate, double inflationRate,double initialInterestPayment,double population, double[] govBudgetBreakDown, double taxRevenue, double initialnationalDebt, double maxTaxBracket, double spendableTaxRevenue, double joy
+    //manufacturing (standin for most subsidies), non healthcare welfare, healthcare, salaries (standin for most pensions and labor expenditures), millitary, anythingElse
+//NAT.initializeNation("China",-.001,7680, 7290, 3510, 2590, .05, .03, .002, 170,14200000000 ,new double[]{110.0, 338.0, 317.0, 100.0, 56.0, 200.0},1000,9000.0,0.40,1000, 100.0);
+  NAT.initializeNation ("United States", .005,16100,5.6,3100, 4100,0.028, .0425,.023, 684, 340000000,new double[]{200, 1200, 4900, 336, 997, 885},4920,34000,0.37,4920, 80.0);
+
+  currentImage=1;
+    cp5.addTextfield("MaxTaxBracket")
+    .setPosition(0,0)
+    .setSize(70,30)
+    //.setRange(0.0,1.0)
+    .setText(str((float) NAT.getNation().getMaxTaxBracket()))
+    .setLabel("Max Tax Bracket");
+  cp5.addTextfield("InterestRate") 
+    .setPosition(70,0)
+    .setSize(70,30)
+    //.setRange(0.0, 3)
+    .setText(str((float) NAT.getNation().getInterestRate()))
+    .setLabel("Interest Rate")
+  ;
+    cp5.addTextfield("MAN")
+    .setPosition(140,0)
+    .setSize(70,30)
+    //.setRange(0.0, 2.0 * (float) Math.pow(10,10))
+    .setText(str((float) NAT.getNation().getGovBudgetBreakDown()[0]))
+    .setLabel("Manufacturing");
+  cp5.addTextfield("WEL")
+    .setPosition(210,0)
+    .setSize(70,30)
+    //.setRange(0.0, 2.0 * (float) Math.pow(10,10))
+    .setText(str((float) NAT.getNation().getGovBudgetBreakDown()[1]))
+    .setLabel("Welfare");
+  cp5.addTextfield("HEL")
+  .setPosition(280,0)
+    .setSize(70,30)
+    //.setRange(0.0, 2.0 * (float) Math.pow(10,10))
+    .setText(str((float) NAT.getNation().getGovBudgetBreakDown()[2]))
+    .setLabel("Healthcare");
+  cp5.addTextfield("SAL")
+   .setPosition(350,0)
+    .setSize(70,30)
+    //.setRange(0.0, 2.0 * (float) Math.pow(10,10))
+    .setText(str((float) NAT.getNation().getGovBudgetBreakDown()[3]))
+    .setLabel("Salaries");  
+  cp5.addTextfield("MIL")
+    .setPosition(420,0)
+    .setSize(70,30)
+    //.setRange(0.0, 2.0 * (float) Math.pow(10,10))
+    .setText(str((float) NAT.getNation().getGovBudgetBreakDown()[4]))
+    .setLabel("Military");
+  cp5.addTextfield("OTH")
+    .setPosition(490,0)
+    .setSize(70,30)
+    //.setRange(0.0, 2.0 * (float) Math.pow(10,10))
+    .setText(str((float) NAT.getNation().getGovBudgetBreakDown()[5]))
+    .setLabel("Other");
+  cp5.getController("NextTurn").show();
+  cp5.getController("MaxTaxBracket").show();
+  cp5.getController("InterestRate").show();
+  cp5.getController("MAN").show();
+  cp5.getController("WEL").show();
+  cp5.getController("HEL").show();
+  cp5.getController("SAL").show();
+  cp5.getController("MIL").show();
+  cp5.getController("OTH").show(); 
+}
+
 
 
 
