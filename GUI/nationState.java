@@ -7,6 +7,7 @@ public class nationState {
  private static double GlobalGDPGrowth = .034;
   private static double year = 2024;
  //including no way to modify net exports for now but that will change
+ private String name;
  private double consumerSpending, Investment, Exports, Imports, GDPGrowthRate, interestRate, inflationRate, taxRevenue,initialnationalDebt, maxTaxBracket, joy, initialInterestPayment, spendableTaxRevenue, population, populationGrowthRate, DefaultGDPGrowthRate;
  private ArrayList<Bonds> listOfBonds;
 //government budget breaks down into six core sectors, manufacturing (standin for most subsidies), non healthcare welfare, healthcare, salaries (standin for most pensions and labor expenditures), millitary, anythingElse
@@ -14,7 +15,8 @@ public class nationState {
 private double[] govBudgetBreakDown;
 //change
 
-public nationState(double populationGrowthRate,double ConsumerSpending, double Investment,  double Exports, double Imports, double DefaultGDPGrowthRate, double interestRate, double inflationRate,double initialInterestPayment,double population, double[] govBudgetBreakDown, double taxRevenue, double initialnationalDebt, double maxTaxBracket, double spendableTaxRevenue, double joy) {
+public nationState(String name, double populationGrowthRate,double ConsumerSpending, double Investment,  double Exports, double Imports, double DefaultGDPGrowthRate, double interestRate, double inflationRate,double initialInterestPayment,double population, double[] govBudgetBreakDown, double taxRevenue, double initialnationalDebt, double maxTaxBracket, double spendableTaxRevenue, double joy) {
+  this.name = name;
   this.GDPGrowthRate = DefaultGDPGrowthRate;
   this.consumerSpending = ConsumerSpending;
   this.Investment = Investment;
@@ -51,6 +53,10 @@ return thingsToReturn;
 
 public double getJoy() {
 return joy;
+}
+
+public String getName() {
+ return name; 
 }
 
 
@@ -121,6 +127,14 @@ public double getInterestRate() {
 
 public double getTaxRevenue() {
   return taxRevenue;
+}
+
+public double Investment() {
+ return Investment; 
+}
+
+public double population() {
+return population;  
 }
 public double getSpending() {
   return governmentSpending();
@@ -225,13 +239,13 @@ oldTotalGovernmentSpending += oldGovernmentBudget[i];
 
 public double calculateJoy(double gdpGrowth, double taxChange, double inflationRate, double nationalDebt, double oldHealthcare, double oldWelfare) {
   if (oldHealthcare / govBudgetBreakDown[1] - 1 != 0 && (oldWelfare / govBudgetBreakDown[2] - 1) != 0) {
-  return joy * ((1 + gdpGrowth * 3) - (taxChange + inflationRate + nationalDebt / GDP()) - ((oldHealthcare / govBudgetBreakDown[1] - 1) + (oldWelfare / govBudgetBreakDown[2] - 1)));
+  return joy * ((1 + gdpGrowth * 3) - (taxChange + inflationRate + nationalDebt / GDP() / 2) - ((oldHealthcare / govBudgetBreakDown[1] - 1) + (oldWelfare / govBudgetBreakDown[2] - 1)));
 }
 else if ((oldWelfare / govBudgetBreakDown[2] - 1) != 0) {
-  return joy * ((1 + gdpGrowth * 3) - (taxChange + inflationRate + nationalDebt / GDP()) - (oldWelfare / govBudgetBreakDown[2] - 1));
+  return joy * ((1 + gdpGrowth * 3) - (taxChange + inflationRate + nationalDebt / GDP() / 2) - (oldWelfare / govBudgetBreakDown[2] - 1));
 
 }
-return joy * ((1 + gdpGrowth * 3) - (taxChange + inflationRate + nationalDebt /  GDP()));
+return joy * ((1 + gdpGrowth * 3) - (taxChange + inflationRate + nationalDebt /  GDP() / 2));
 
   }
 
@@ -267,7 +281,7 @@ public double getMaxTaxBracket(){
 
 public void adjustPopulationStatistics() {
   populationGrowthRate = populationGrowthRate * (GDPGrowthRate + 1 - inflationRate);
-  population = population * populationGrowthRate;
+  population = population * (1 + populationGrowthRate);
 }
 
 
@@ -332,9 +346,16 @@ public double getPopulationGrowthRate() {
   return populationGrowthRate;
 }
 
-public double setPopulationGrowthRate() {
-  return populationGrowthRate;
+public void setPopulationGrowthRate(double newPopulationGrowthRate) {
+populationGrowthRate = newPopulationGrowthRate;
 }
+
+public void setJoy(double newJoy) {
+ joy = newJoy; 
+}
+
+
+
 public void happened(){
   Random rand=new Random();
   double happen=rand.nextDouble();
