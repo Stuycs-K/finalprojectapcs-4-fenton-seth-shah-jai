@@ -41,8 +41,10 @@ void draw(){
   }
   else if(currentImage==2){
     background(0);
+    textSize(24);
+    fill(255);
     image(closing, 0,0, width,height);
-    text("Game Over",width/2,height/2);
+    text("Game Over, you've been kicked out for gross incompetence",0,20);
   }
 }
 void setup(){
@@ -289,6 +291,7 @@ void JAP() {
 
 
 void NextTurn(){
+  
     //System.out.println("{ressed");
     newBudget[0]=Double.parseDouble(cp5.get(Textfield.class,"MAN").getText());
     newBudget[1]=Double.parseDouble(cp5.get(Textfield.class,"WEL").getText());
@@ -298,6 +301,7 @@ void NextTurn(){
     newBudget[5]=Double.parseDouble(cp5.get(Textfield.class,"OTH").getText());
     NAT.turn(newBudget,Double.parseDouble(cp5.get(Textfield.class,"InterestRate").getText()),Double.parseDouble(cp5.get(Textfield.class,"MaxTaxBracket").getText()));
     float Happening=random(1);
+    if(NAT.getNation().getJoy()>=20){    
     if(Happening<0.3){
       Events.EventHappens(NAT.getNation());
       eventNew.setText("Guys, "+Events.getCurrent()).show();
@@ -308,4 +312,17 @@ void NextTurn(){
       showSwitch=2;
     } 
     times=millis();
+   }
+  else{
+      cp5.getController("NextTurn").hide();
+  cp5.getController("MaxTaxBracket").hide();
+  cp5.getController("InterestRate").hide();
+  cp5.getController("MAN").hide();
+  cp5.getController("WEL").hide();
+  cp5.getController("HEL").hide();
+  cp5.getController("SAL").hide();
+  cp5.getController("MIL").hide();
+  cp5.getController("OTH").hide(); 
+    currentImage=2;
+  }
 }
