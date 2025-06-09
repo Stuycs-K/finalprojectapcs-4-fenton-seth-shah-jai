@@ -45,7 +45,7 @@ Spent 8.5 hours hanging out with friends instead of doing prom, was out till lik
 ### 2025-06-08
 Added multiple countries functionality and did all the stuff that wasn't programming.
 
-
+I believe this document accurately reflects the contributions of my teamate. - Jai Shah
 
 
 
