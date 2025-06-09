@@ -4,7 +4,7 @@ This document must be updated daily every time you finish a work session.
 
 ## Jai Shah
 
-### 2025-05-22 - Worked on Events
+### 2025-05-(22-25) - Worked on Events
 Wasn't here in APCS, wrote up Events in 16 min after discussion. Spent another 7 min planning out how events will function and finishing the class, including adding new accessor methods
 
 ### 2025-05-26 - Working through UML & Events
@@ -16,7 +16,7 @@ Finished all of run, need exceptions for edge cases but mostly good as is, Event
 ### 2025-05-28 - Finished Events & Compiled
 Made sure events existed, compiled all files and they work (with exception to tax revenue), now work is needed on actually calling the events and making the nations.
 
-### 2025-05-28 - Finished All Code, Entered Debugging
+### 2025-05-(29-31) - Finished All Code, Entered Debugging
 All code for the minimum viable product is done, having issues with joy autoset to 0, working on fixing
 
 ### 2025-06-01 - Edited events, MVP is done
@@ -27,3 +27,12 @@ Worked on the Control P5 GUI for this project, figuring it out
 
 ### 2025-06-03 - Made parts of GUI Display
 Events still broken, but the button and textBoxes do function
+
+### 2025-06-04 - Created Turns
+Got game events and labels to show up, working on making events appear
+
+### 2025-06-05 - Created Events
+Got events to work properly on a delay, works now
+
+### 2025-06-(06-08) - Added Images, Inputs, and Screens
+Made a start and end screen, got inputs to work, and got a start and end screen with the framework for multiple nations

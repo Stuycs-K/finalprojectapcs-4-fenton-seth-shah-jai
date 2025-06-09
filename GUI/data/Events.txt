@@ -1,12 +1,12 @@
-The Stock Market just shot up!,0.02,1
-A small economic boom just occurred!,0.02,1
-A big economic boom just occurred,0.04,1
-A lot of investment poured into the country,0.04,1
-Someone placed a lot of orders for cheap goods,0.02,1
-Some guy ordered thousands of Toyotas from your manufacturers,0.02,-1
-The Greeks had another credit crisis!,0.05,-1
-A bunch of subprime mortgages just went bust,0.05,-1
-The housing market just crashed,0.05,-1
-You have been embargoed for some unknown reason,0.01,-1
-A bunch of very high profile fraud cases have occurred,0.01,-1
-Someone defrauded a third of the country,0.05,-1
+The Stock Market just shot up!,0.12,1
+A small economic boom just occurred!,0.12,1
+A big economic boom just occurred,0.14,1
+A lot of investment poured into the country,0.14,1
+Someone placed a lot of orders for cheap goods,0.12,1
+Some guy ordered thousands of Toyotas from your manufacturers,0.12,-1
+The Greeks had another credit crisis!,0.15,-1
+A bunch of subprime mortgages just went bust,0.15,-1
+The housing market just crashed,0.15,-1
+You have been embargoed for some unknown reason,0.11,-1
+A bunch of very high profile fraud cases have occurred,0.11,-1
+Someone defrauded a third of the country,0.15,-1
