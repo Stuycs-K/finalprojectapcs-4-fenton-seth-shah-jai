@@ -77,8 +77,11 @@ Global Economic Conditions modifier added in early stage for later testing - Set
 
 6/1/2025
 
-All major domestic economic levers testing, and easy player interfacing and reading via terminal, minimum viable product complete - Seth and Jai
+All major domestic economic levers testing, and easy player interfacing and reading via terminal, minimum viable product complete - Seth and Ja
 
+
+
+~
 6/4/2025
 
 Important trade indicators added to nation class (including net exports being added to GDP calculations where before it was just stuck at its initial value) and top ten trade partner list of nations successfully implemented as instance variable- Seth
@@ -97,4 +100,5 @@ Gui programming complete, widgets and buttons control major functionalities - Se
 
 6/14/2025 
 All features tested project is complete -  Seth and Jai
-
+~
+^^^ Obviously we didn't have as long as we thought, also processing was a bit more of a pain then expected
