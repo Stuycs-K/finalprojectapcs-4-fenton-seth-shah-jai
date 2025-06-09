@@ -36,3 +36,5 @@ Got events to work properly on a delay, works now
 
 ### 2025-06-(06-08) - Added Images, Inputs, and Screens
 Made a start and end screen, got inputs to work, and got a start and end screen with the framework for multiple nations
+
+I believe this document accurately reflects the contributions of my teamate.
