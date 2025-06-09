@@ -34,7 +34,7 @@ Got game events and labels to show up, working on making events appear
 ### 2025-06-05 - Created Events
 Got events to work properly on a delay, works now
 
-I believe this document accurately reflects the contributions of my teamate.
+I believe this document accurately reflects the contributions of my teamate. - Seth
 
 ### 2025-06-(06-08) - Added Images, Inputs, and Screens
 Made a start and end screen, got inputs to work, and got a start and end screen with the framework for multiple nations
