@@ -21,5 +21,33 @@ Finally finished reworking national debt and joy to make the game better, tinker
 ### 2025-05-30
 Finished bonds completely, went through and tinkered with the internal systems to get GDP growth to look reasonable, it's still decent minus a massive reduction in taxes. 
 
-### 2025-06-2
+### 2025-06-02
 Finished tinkering with equations, mvp as a terminal game complete now time to convert everything to processing.
+
+
+### 2025-06-03
+Fixed Jai's buttons and text boxes, learned cp5 and focused in on providing a background and the values on screen.
+
+### 2025-06-04
+Ported over the entire run function and made it work so it edited everything it needed to edit using the prior infrastructure.
+
+### 2025-06-05
+Finally made the entire background setup and fixed the nothing ever happens box.
+
+
+### 2025-06-06
+Crafted the events bug fix which allowed the events.txt file to be read successfully, then spent a bunch of time fixing to merge conflicts.
+
+
+### 2025-06-07
+Spent 8.5 hours hanging out with friends instead of doing prom, was out till like midnight, did nothing.
+
+### 2025-06-08
+Added multiple countries functionality and did all the stuff that wasn't programming.
+
+
+
+
+
+
+
