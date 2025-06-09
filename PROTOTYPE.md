@@ -85,7 +85,8 @@ Early GUI aspects worked on, text boxes mostly completed - Jai [x]
 
 Broader formatting of screen on GUI managed, background added and systems from earlier game integrated. - Seth [x]
 
-
+6/8/2025
+GUI totally done and tested, most of it was done on call so we can just attribute it to both, slightly more specific breakdown available in dev logs - Seth and Jai [x]
 
 ~~6/4/2025~~
 
