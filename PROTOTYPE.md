@@ -56,60 +56,57 @@ How you are breaking down the project and who is responsible for which parts.
 
 5/26/2025
 
-Full Nation Class With All Indicator Methods Complete and Reigons Specified- Seth and Jai
+Full Nation Class With All Indicator Methods Complete and Reigons Specified- Seth and Jai [x]
 
-Early stage government budget control interface - Seth
+Early stage government budget control interface - Seth [x]
 
-Early stage interest rate control interface and inflation modification - Jai
+Early stage interest rate control interface and inflation modification - Jai [x]
 
 5/28/2025
-First nation built out with hardcoded initial instance variables (probably Germany to more efficently test Eurozone events later on) - Jai
+First nation built out with hardcoded initial instance variables (probably Germany to more efficently test Eurozone events later on) - Jai [x]
 
-Counter of top ten global economies included somewhere on screen - Seth
+Counter of top ten global economies included somewhere on screen - Seth [x]
 
 5/30/2025
 
-Rigorous testing of all prior completed functions and game progression to make sure they work - Seth and Jai
+Rigorous testing of all prior completed functions and game progression to make sure they work - Seth and Jai 
 
-First short term positive and negative events - Jai
+First short term positive and negative events - Jai [x]
 
-Global Economic Conditions modifier added in early stage for later testing - Seth
+Global Economic Conditions modifier added in early stage for later testing - Seth [x]
 
 6/1/2025
 
-All major domestic economic levers testing, and easy player interfacing and reading via terminal, minimum viable product complete - Seth and Ja
+All major domestic economic levers testing, and easy player interfacing and reading via terminal, minimum viable product complete - Seth and Jai [x]
 
 
 6/4/2025
-Early GUI aspects worked on, text boxes mostly completed - Jai
+Early GUI aspects worked on, text boxes mostly completed - Jai [x]
 
-Broader formatting of screen on GUI managed, background added and systems from earlier game integrated. - Seth
-
-6/6/2025 
+Broader formatting of screen on GUI managed, background added and systems from earlier game integrated. - Seth [x]
 
 
 
-~~
-6/4/2025
+~~6/4/2025~~
 
-Important trade indicators added to nation class (including net exports being added to GDP calculations where before it was just stuck at its initial value) and top ten trade partner list of nations successfully implemented as instance variable- Seth
+~~Important trade indicators added to nation class (including net exports being added to GDP calculations where before it was just stuck at its initial value) and top ten trade partner list of nations successfully implemented as instance variable- Seth~~
 
-Top ten trade partner economic growth successfully stored and applied - Jai
+~~Top ten trade partner economic growth successfully stored and applied - Jai~~
 
 
-6/6/2025 
+~~6/6/2025 ~~
 
-Global events properly apply to trade partners and balence of trade changes with trade partner growth - Jai
+~~Global events properly apply to trade partners and balence of trade changes with trade partner growth - Jai~~
 
-GPT API integration to successfully look up trade partners and their respective statistics so it doesn't have to have numbers hardcoded in - Seth
+~~GPT API integration to successfully look up trade partners and their respective statistics so it doesn't have to have numbers hardcoded in - Seth~~
 
-6/12/2025 
-Gui programming complete, widgets and buttons control major functionalities - Seth and Jai
+~~6/12/2025 ~~
+~~Gui programming complete, widgets and buttons control major functionalities - Seth and Jai~~
 
-6/14/2025 
-All features tested project is complete -  Seth and Jai
-~~
+~~6/14/2025 ~~
+~~All features tested project is complete -  Seth and Jai~~
 
 
 
-^^^ Obviously we didn't have as long as we thought, also processing was a bit more of a pain then expected
+
+^^^ Obviously we didn't have as long as we thought, also processing was a bit more of a pain then expected. Thus, the timeline shifted a lot.
