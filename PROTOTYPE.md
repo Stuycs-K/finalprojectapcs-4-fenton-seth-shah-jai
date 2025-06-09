@@ -80,6 +80,15 @@ Global Economic Conditions modifier added in early stage for later testing - Set
 All major domestic economic levers testing, and easy player interfacing and reading via terminal, minimum viable product complete - Seth and Ja
 
 
+6/4/2025
+Early GUI aspects worked on, text boxes mostly completed - Jai
+
+Broader formatting of screen on GUI managed, background added and systems from earlier game integrated. - Seth
+
+6/6/2025 
+
+
+
 ~~
 6/4/2025
 
