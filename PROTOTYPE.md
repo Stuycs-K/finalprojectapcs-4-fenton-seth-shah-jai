@@ -28,8 +28,8 @@ Minimum Viable Product:
 How you will be using the topics covered in class in the project
 
 1. We'll use a nation class that will contain functions to calculate our major economic indicators (will function as our major parent class) (this will provide us the capacity to add more nation states in for a dynamic trade system and go beyond our minimum viable product)
-2. We'll use sorting to derive a dynamic list of top ten nations by GDP (initially this will just include your nation of it makes it, plus the other nations real world GDPs but we hope to change that after minimum viable product is achieved)
-3. We'll initially use the command line to take player input using the method we learned in class though we'll later modify that to use widgets with will interact with processing once we achieve minimum viable product
+~~2. We'll use sorting to derive a dynamic list of top ten nations by GDP (initially this will just include your nation of it makes it, plus the other nations real world GDPs but we hope to change that after minimum viable product is achieved)~~
+~~3~~2. We'll initially use the command line to take player input using the method we learned in class though we'll later modify that to use widgets with will interact with processing once we achieve minimum viable product
 
 
 # Project Design
