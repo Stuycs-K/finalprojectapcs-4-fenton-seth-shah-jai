@@ -80,7 +80,6 @@ Global Economic Conditions modifier added in early stage for later testing - Set
 All major domestic economic levers testing, and easy player interfacing and reading via terminal, minimum viable product complete - Seth and Ja
 
 
-
 ~~
 6/4/2025
 
@@ -101,4 +100,7 @@ Gui programming complete, widgets and buttons control major functionalities - Se
 6/14/2025 
 All features tested project is complete -  Seth and Jai
 ~~
+
+
+
 ^^^ Obviously we didn't have as long as we thought, also processing was a bit more of a pain then expected
